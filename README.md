@@ -1,7 +1,7 @@
-
+Cuma Iseng Aja Bang Please Jangan Di Bully:'(
 
 # Features
-If you want to unlock premium commands, please buy me a coffee at least 1 on Ko-fi platform.
+
 
 |    DOWNLOAD      |  Availability  |
 | :--------------: | :------------: |
