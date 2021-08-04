@@ -11,11 +11,29 @@ let handler = async (m, { conn, usedPrefix }) => {
 
   } finally {
     let str = `
-┌─── ⳹°❀❬ Absen ❭❀°
-│✎ .cekabsen
-│✎ .hapusabsen
-│✎ .mulaiabsen
-└────────────┈ ⳹ ❋ཻུ۪۪⸙
+┏━━°❀❬ *USER PROFILE* ❭❀°━━┓
+┃
+┃•  *Nama :* ${name}
+┃•  *Umur:* ${age}
+┃•  *Xp Mu:* ${exp}
+┃•  *Limit :* ${limit}
+┃•  *Level :* ${level}
+┃•  *Money:* ${money}
+┃    
+┣━━°❀❬ *ABSEN MENU* ❭❀°━━┓
+┃
+┣➥ ${usedPrefix}mulaiabsen
+┣➥ ${usedPrefix}deleteabsen <opsi>
+┣➥ ${usedPrefix}cekabsen <opsi>
+┃
+┣━━°❀❬ *Thanks To* ❭❀°━━┓
+┃
+┣➥ *Nurotomo (author)*
+┣➥ *Ariffb25 (pengembang)*
+┣➥ *Aria Putra (pengembang)*
+┣➥ *All Penyedia Api*
+┃
+┗━━━━━━━━━━━━━━━━
 `.trim()
     let mentionedJid = [who]
     conn.sendFile(m.chat, pp, 'lp.jpg', str, m, false, { contextInfo: { mentionedJid }})
