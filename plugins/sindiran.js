@@ -23,5 +23,7 @@ function pickRandom(list) {
 
 // https://jalantikus.com/tips/kata-kata-bucin/
 global.sindiran = [
-  "Banyak Sih Fiturnya, Tapi Pada Mati Mwhehe.",
+  "Banyak Sih Fiturnya, Tapi Pada Mati Mwhehe",
+  "Makanya Punya Muka Tu Ganteng Kontol",
+  “Bercerminlah dahulu sebelum kamu membuat cermin orang lain.”, 
 ]
