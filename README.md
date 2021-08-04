@@ -1,12 +1,3 @@
-# stikerinbot
-
-<p align="center">
-	<img src="https://i.ibb.co/jr9Nh6Q/Thumb.jpg" width="35%" style="margin-left: auto;margin-right: auto;display: block;">
-</p>
-
-Simple WhatsApp Bot
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/ariffb25/stikerinbot)
 
 ## UNTUK PENGGUNA TERMUX/UBUNTU/SSH
 
@@ -140,10 +131,4 @@ conn.logger.level = 'trace'
 conn.logger.level = 'debug'
 ```
 
----------
-
- [![Nurutomo](https://github.com/Nurutomo.png?size=100)](https://github.com/Nurutomo) | [![Ariffb](https://github.com/ariffb25.png?size=100)](https://github.com/ariffb25)
-----|----
-[Nurutomo](https://github.com/Nurutomo) | [Ariffb](https://github.com/ariffb25)
- Penulis / Pencipta | Recode
 
