@@ -7,8 +7,8 @@ apt install git -y
 apt install nodejs -y
 apt install ffmpeg -y
 apt install imagemagick -y
-git clone https://github.com/ariffb25/stikerinbot
-cd stikerinbot
+git clone https://github.com/iniariaaa/botwea
+cd botwea
 npm install
 npm update
 ```
@@ -23,7 +23,7 @@ npm update
 * Unduh & Instal ImageMagick [`Klik Disini`](https://imagemagick.org/script/download.php)
 
 ```bash
-git clone https://github.com/ariffb25/stikerinbot
+git clone https://github.com/iniariaaa/botwea
 cd stikerinbot
 npm install
 npm update
