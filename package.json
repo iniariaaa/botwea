@@ -1,5 +1,5 @@
 {
-  "name": "stikerinbot",
+  "name": "ariabotz",
   "version": "1.1.1",
   "description": "WhatsApp Bot Ringan",
   "main": "index.js",
@@ -14,7 +14,7 @@
   "keywords": [
     "whatsapp-bot"
   ],
-  "author": "Ariffb",
+  "author": "AriaPutra",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/iniariaaa/botwea/issues"
