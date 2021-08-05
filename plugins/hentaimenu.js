@@ -26,6 +26,15 @@ conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
                                     }, { 
                                         "title": `Random Manga`,
                                         "rowId": ".manga"
+                                    }, { 
+                                        "title": `Random Waifu Hentai`,
+                                        "rowId": ".waifuj"
+                                    }, { 
+                                        "title": `Random Blowjob`,
+                                        "rowId": ".blowjob"
+                                    }, { 
+                                        "title": `Random TrapNime`,
+                                        "rowId": ".trap"
                                     }
                                 ]
                             }
