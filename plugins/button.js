@@ -74,6 +74,6 @@ conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
 }
                     }
                  }, {}), {waitForAck: true})
-handler.command = ['listmenu']
+handler.command = ['menu']
 handler.register = true
 module.exports = handler
