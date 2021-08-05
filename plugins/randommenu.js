@@ -18,8 +18,8 @@ conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
                                         "title": "Random Sindiran",
                                         "rowId": ".sindiran"                 
                                     },{
-                                        "title": "Random Bacotan",
-                                        "rowId": ".bacot"                 
+                                        "title": "Random Pantun",
+                                        "rowId": ".pantun"                 
                                     },{
                                         "title": "Random Galau",
                                         "rowId": ".galau"
@@ -39,8 +39,8 @@ conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
                                         "title": "Random Kata Bijak",
                                         "rowId": ".katabijak"
                                     }, {
-                                        "title": "Random Cerpen",
-                                        "rowId": ".cerpen"
+                                        "title": "Random Lolice",
+                                        "rowId": ".lolice"
                                     }, {
                                         "title": "Random Wallpaper Tekno",
                                         "rowId": ".rwptkno"
