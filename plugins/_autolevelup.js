@@ -18,6 +18,7 @@ handler.before = async function (m) {
 
                 if (before !== user.level) {
                         let rank = await new canvacord.Rank()
+                                .setRank(usersLevel.indexOf(m.sender) + 1)
                                 .setAvatar(pp)
                                 .setLevel(user.level)
                                 .setCurrentXP(user.exp - min)
@@ -27,7 +28,7 @@ handler.before = async function (m) {
                                 .setDiscriminator(discriminator);
                         rank.build()
                                 .then(async data => {
-                                        await this.sendButtonImg(m.chat, `_*Level Up!*_\n_${before}_ -> _${user.level}_`.trim(), data, '© ariabotz', 'CLAIM', ',claim')
+                                        await this.sendButtonImg(m.chat, `_*Level Up!*_\n_${before}_ -> _${user.level}_`.trim(), data, '© stikerin', 'CLAIM', ',claim')
                                 })
                 }
         }
