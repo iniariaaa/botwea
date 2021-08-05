@@ -3,7 +3,7 @@ let handler = async (m, { conn, args }) => {
    response = args.join(' ')
   if (!args[0]) throw 'Masukkan Parameter'
   m.reply('Sedang Diproses...')
-  let res = await fetch(`https://kuhong-api.herokuapp.com/api/freefire?text=${response}&apikey=4qk0g7Dgs2Hr-5xBdsTgQmdS4JN`)
+  let res = await fetch(`https://api.zeks.xyz/api/epep?apikey=apivinz&text=AriaGanzTzy`)
   let image = await res.buffer()
   conn.sendFile(m.chat, image, 'image.jpg', 'Nih kak', m)
 }
