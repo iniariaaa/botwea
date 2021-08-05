@@ -5,7 +5,7 @@ let handler = async (m, { isPrems }) => {
   let time = user.lastclaim + 86400000
   if (new Date - user.lastclaim < 86400000) throw `Kamu sudah mengklaim klaim harian hari ini\ntunggu selama ${msToTime(time - new Date())} lagi`
   user.money += isPrems ? prem * user.level : free * user.level
-  m.reply(`+${isPrems ? prem * user.level : free * user.level} XP\n\nsemakin tinggi level, semakin tinggi juga Money yang didapat`)
+  m.reply(`+${isPrems ? prem * user.level : free * user.level} Money\n\nsemakin tinggi level, semakin tinggi juga Money yang didapat`)
   user.lastclaim = new Date * 1
 }
 handler.help = ['daily', 'claim']
