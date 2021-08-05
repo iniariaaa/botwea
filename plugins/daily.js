@@ -1,15 +1,12 @@
-const free = 1000
-const prem = 5000
-const pre = 1
-const pree = 5
+const free = 5000
+const prem = 10000
 let handler = async (m, { isPrems }) => {
-  let time = global.db.data.users[m.sender].lastclaim + 86400000
-  if (new Date - global.db.data.users[m.sender].lastclaim < 86400000) throw `Kamu sudah mengklaim klaim harian hari ini\ntunggu selama ${msToTime(time - new Date())} lagi`
-  global.db.data.users[m.sender].exp += isPrems ? prem : free
-  global.db.data.users[m.sender].money += isPrems ? prem : free
-  global.db.data.users[m.sender].potion += isPrems ? pre : pree
-  m.reply(`Anda sudah mengklaim dan mendapatkan ${isPrems ? prem : free} 💵money + ${isPrems ? prem : free} XP Dan ${isPrems ? pre : pree} Potion`)
-  global.db.data.users[m.sender].lastclaim = new Date * 1
+  let user = global.db.data.users[m.sender]
+  let time = user.lastclaim + 86400000
+  if (new Date - user.lastclaim < 86400000) throw `Kamu sudah mengklaim klaim harian hari ini\ntunggu selama ${msToTime(time - new Date())} lagi`
+  user.money += isPrems ? prem * user.level : free * user.level
+  m.reply(`+${isPrems ? prem * user.level : free * user.level} XP\n\nsemakin tinggi level, semakin tinggi juga Money yang didapat`)
+  user.lastclaim = new Date * 1
 }
 handler.help = ['daily', 'claim']
 handler.tags = ['xp']
@@ -25,6 +22,7 @@ handler.botAdmin = false
 
 handler.fail = null
 handler.exp = 0
+hadnler.money = 0
 
 module.exports = handler
 
