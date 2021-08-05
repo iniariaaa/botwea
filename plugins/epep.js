@@ -3,7 +3,7 @@ let handler = async (m, { conn, args }) => {
    response = args.join(' ')
   if (!args[0]) throw 'Masukkan Parameter'
   m.reply('Sedang Diproses...')
-  let res = await fetch(`https://api.zeks.xyz/api/epep?apikey=AriaGanzTzy&text=${text}`)
+  let res = await fetch(`https://api.zeks.xyz/api/epep?apikey=AriaGanzTzy&text=${response}`)
   let image = await res.buffer()
   conn.sendFile(m.chat, image, 'image.jpg', 'Nih kak', m)
 }
