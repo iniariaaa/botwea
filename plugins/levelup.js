@@ -10,9 +10,15 @@ let handler = async m => {
   } catch (e) {
   } finally {
     let user = global.db.data.users[m.sender]
+    let users = Object.entries(global.db.data.users).map(([key, value]) => {
+      return { ...value, jid: key }
+    })
+    let sortedLevel = users.map(toNumber('level')).sort(sort('level'))
+    let usersLevel = sortedLevel.map(enumGetKey)
     if (!levelling.canLevelUp(user.level, user.exp, global.multiplier)) {
       let { min, xp, max } = levelling.xpRange(user.level, global.multiplier)
       let rank = await new canvacord.Rank()
+        .setRank(usersLevel.indexOf(m.sender) + 1)
         .setAvatar(pp)
         .setLevel(user.level)
         .setCurrentXP(user.exp - min)
@@ -22,13 +28,14 @@ let handler = async m => {
         .setDiscriminator(discriminator)
       rank.build()
         .then(async data => {
-          await conn.sendButtonImg(m.chat, `Level *${user.level} (${user.exp - min}/${xp})*\nKurang *${max - user.exp}* lagi!`.trim(), data, '© ariabotz', 'AUTO LEVEL UP', ',on autolevelup')
+          await conn.sendButtonImg(m.chat, `Level *${user.level} (${user.exp - min}/${xp})*\nKurang *${max - user.exp}* lagi!`.trim(), data, '© stikerin', 'AUTO LEVEL UP', ',on autolevelup')
         })
     }
     let before = user.level * 1
     while (levelling.canLevelUp(user.level, user.exp, global.multiplier)) user.level++
     if (before !== user.level) {
       let rank = await new canvacord.Rank()
+        .setRank(usersLevel.indexOf(m.sender) + 1)
         .setAvatar(pp)
         .setLevel(user.level)
         .setCurrentXP(user.exp - min)
@@ -38,7 +45,7 @@ let handler = async m => {
         .setDiscriminator(discriminator)
       rank.build()
         .then(async data => {
-          await conn.sendButtonImg(m.chat, `_*Level Up!*_\n_${before}_ -> _${user.level}_`.trim(), data, '© stikerin', 'AUTO LEVEL UP', ',on autolevelup')
+          await conn.sendButtonImg(m.chat, `_*Level Up!*_\n_${before}_ -> _${user.level}_`.trim(), data, '© ariabotz', 'AUTO LEVEL UP', ',on autolevelup')
         })
     }
   }
@@ -50,3 +57,19 @@ handler.tags = ['xp']
 handler.command = /^levelup$/i
 
 module.exports = handler
+
+function sort(property, ascending = true) {
+  if (property) return (...args) => args[ascending & 1][property] - args[!ascending & 1][property]
+  else return (...args) => args[ascending & 1] - args[!ascending & 1]
+}
+
+function toNumber(property, _default = 0) {
+  if (property) return (a, i, b) => {
+    return { ...b[i], [property]: a[property] === undefined ? _default : a[property] }
+  }
+  else return a => a === undefined ? _default : a
+}
+
+function enumGetKey(a) {
+  return a.jid
+}
