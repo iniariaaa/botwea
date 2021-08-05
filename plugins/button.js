@@ -29,6 +29,10 @@ conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
                                         "description": "\n*I Want To Use Hentai Menu*",
                                         "rowId": ".hentaimenu"                 
                                     },{
+                                        "title": "Editor Menu",
+                                        "description": "\n*I Want To Use Hentai Menu*",
+                                        "rowId": ".editormenu"
+                                    },{
                                         "title": "Absen Menu",
                                         "description": "\n*I Want To Use Absen Menu*",
                                         "rowId": ".absenmenu"                 
@@ -70,6 +74,6 @@ conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
 }
                     }
                  }, {}), {waitForAck: true})
-handler.command = ['menu']
+handler.command = ['listmenu']
 handler.register = true
 module.exports = handler
