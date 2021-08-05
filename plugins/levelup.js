@@ -28,7 +28,7 @@ let handler = async m => {
         .setDiscriminator(discriminator)
       rank.build()
         .then(async data => {
-          await conn.sendButtonImg(m.chat, `Level *${user.level} (${user.exp - min}/${xp})*\nKurang *${max - user.exp}* lagi!`.trim(), data, '© stikerin', 'AUTO LEVEL UP', ',on autolevelup')
+          await conn.sendButtonImg(m.chat, `Level *${user.level} (${user.exp - min}/${xp})*\nKurang *${max - user.exp}* lagi!`.trim(), data, '© ariabotz', 'AUTO LEVEL UP', ',on autolevelup')
         })
     }
     let before = user.level * 1
