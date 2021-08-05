@@ -3,7 +3,7 @@ let handler = async(m, { conn, text }) => {
 
   await m.reply('Searching...')
 	axios.get(`http://docs-jojo.herokuapp.com/api/cersex`).then ((res) => {
-	 	let hasil = `${res.data.result.judul}\n${res.data.result.cersex.\}'            
+	 	let hasil = `${res.data.result.judul}`\n`${res.data.result.cersex.\}`          
 
     conn.reply(m.chat, hasil, m)
 	})
