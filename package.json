@@ -36,6 +36,7 @@
     "g-i-s": "^2.1.6",
     "google-it": "^1.6.2",
     "got": "^11.8.2",
+    "canvacord": "^5.2.3",
     "human-readable": "^0.2.1",
     "img2braille": "^1.0.1",
     "jsbarcode": "^3.11.4",
