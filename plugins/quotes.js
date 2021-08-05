@@ -1,7 +1,7 @@
 let axios = require("axios");
 let handler = async(m, { conn, text }) => {
 
-	axios.get(`https://api.zeks.xyz/api/quote?apikey=AriaGanzTzy`).then ((res) => {
+	axios.get(`https://ariarestapi.herokuapp.com/api/randomquote?apikey=AriaApi`).then ((res) => {
 	 	let hasil = `${res.data.quotes}`
 
     conn.reply(m.chat, hasil, m)
