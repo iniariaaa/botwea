@@ -22,7 +22,7 @@ handler.botAdmin = false
 
 handler.fail = null
 handler.exp = 0
-hadnler.money = 0
+handler.money = 0
 
 module.exports = handler
 
