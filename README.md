@@ -1,7 +1,7 @@
 # AriaBotz
 
 <p align="center">
-	<img src="https://i.ibb.co/jr9Nh6Q/Thumb.jpg" width="35%" style="margin-left: auto;margin-right: auto;display: block;">
+	<img src="https://avatars.githubusercontent.com/u/87540157?s=400&u=05a01466f5a1b687388c88d05f56c9a345be50e1&v=4" width="35%" style="margin-left: auto;margin-right: auto;display: block;">
 </p>
 
 Simple WhatsApp Bot
