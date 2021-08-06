@@ -1,10 +1,12 @@
 let PhoneNumber = require('awesome-phonenumber')
 let levelling = require('../lib/levelling')
 
-let handler = async (m, { conn, usedPrefix }) => {
-
+let handler = async (m, { conn, usedPrefix }) => {    
+    let { name, money, limit, exp, lastclaim, registered, regTime, age, level, role } = global.db.data.users[m.sender]
+    let { min, xp, max } = levelling.xpRange(level, global.multiplier)
+    let math = max - xp
   let pp = './src/avatar_contact.png'
-  let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+  let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender  
   try {
     pp = await conn.getProfilePicture(who)
   } catch (e) {
@@ -40,7 +42,6 @@ let handler = async (m, { conn, usedPrefix }) => {
   }
 }
 handler.help = ['absenmenu']
-handler.tags = ['jj']
 handler.command = /^(absenmenu)$/i
 handler.owner = false
 handler.mods = false
@@ -50,6 +51,8 @@ handler.private = false
 handler.register = true
 handler.admin = false
 handler.botAdmin = false
+
 handler.fail = null
 
 module.exports = handler
+
