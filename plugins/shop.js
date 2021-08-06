@@ -104,6 +104,7 @@ Sampah:     ${Ssampah}\n━━━━━━━━━━━━━━━━━\n━
                             } else conn.reply(m.chat, `Uang Anda Tidak Cukup Untuk Membeli ${count} Sampah Dengan Harga ${Bsampah * count} Money`.trim(), m)
                         
                         break
+
                     case 'armor':
                             if (global.db.data.users[m.sender].armor == 5) return conn.reply(m.chat, 'Armormu sudah *Level Max*', m)
                             if (global.db.data.users[m.sender].money > armor) {
@@ -194,7 +195,14 @@ Sampah:     ${Ssampah}\n━━━━━━━━━━━━━━━━━\n━
                         } else conn.reply(m.chat, `Money Anda Tidak Cukup `, m)
                     
                     break
-
+                 case 'kucing':
+                        if (global.db.data.users[m.sender].money >= Bpet * count) {
+                            global.db.data.users[m.sender].kucing += count * 1
+                            global.db.data.users[m.sender].money -= Bpet * count
+                            conn.reply(m.chat, `Sukses Membeli ${count} kucing Dengan Harga ${Bpet * count} Money `, m)
+                        } else conn.reply(m.chat, `Money Anda Tidak Cukup `, m)
+                    
+                    break
                 case 'common':
                         if (global.db.data.users[m.sender].money >= Bcommon * count) {
                             global.db.data.users[m.sender].common += count * 1
@@ -233,6 +241,14 @@ Sampah:     ${Ssampah}\n━━━━━━━━━━━━━━━━━\n━
                             global.db.data.users[m.sender].money -= Bsampah * count
                             conn.reply(m.chat, `Sukses Membeli ${count} Sampah Dengan Harga ${Bsampah * count} money`, m)
                         } else conn.reply(m.chat, `Uang Anda Tidak Cukup Untuk Membeli ${count} Sampah Dengan Harga ${Bsampah * count} Money `.trim(), m)
+                    
+                    break
+                case 'kucing':
+                        if (global.db.data.users[m.sender].money >= Bpet * count) {
+                            global.db.data.users[m.sender].kucing += count * 1
+                            global.db.data.users[m.sender].money -= Bpet * count
+                            conn.reply(m.chat, `Sukses Membeli ${count} kucing Dengan Harga ${Bpet * count} Money `, m)
+                        } else conn.reply(m.chat, `Money Anda Tidak Cukup `, m)
                     
                     break
                 case 'armor':
@@ -293,15 +309,7 @@ Sampah:     ${Ssampah}\n━━━━━━━━━━━━━━━━━\n━
                         global.db.data.users[m.sender].money += Ssampah * count
                         conn.reply(m.chat, `Sukses Menjual ${count} Sampah, Dan Anda Mendapatkan ${Ssampah * count} Money`.trim(), m)
                     } else conn.reply(m.chat, `Sampah Anda Tidak Cukup`.trim(), m)
-                    break
-                 case 'kucing':
-                        if (global.db.data.users[m.sender].money >= Bpet * count) {
-                            global.db.data.users[m.sender].kucing += count * 1
-                            global.db.data.users[m.sender].money -= Bpet * count
-                            conn.reply(m.chat, `Sukses Membeli ${count} kucing Dengan Harga ${Bpet * count} Money `, m)
-                        } else conn.reply(m.chat, `Money Anda Tidak Cukup `, m)
-                    
-                    break
+                    break           
                  case 'diamond':
                     if (global.db.data.users[m.sender].diamond >= count * 1) {
                         global.db.data.users[m.sender].diamond -= count * 1
