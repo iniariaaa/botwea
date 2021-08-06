@@ -17,7 +17,7 @@ Simple WhatsApp Bot
 
 ```bash
 git clone https://github.com/iniariaaa/botwea
-cd stikerinbot
+cd botwea
 npm install
 npm update
 ```
