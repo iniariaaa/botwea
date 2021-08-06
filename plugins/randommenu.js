@@ -56,7 +56,10 @@ conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
                                     },{
                                         "title": "Random Meme",
                                         "rowId": ".meme"
-                                    }
+                                    },{
+                                       "title": "Random Pp Couple",
+                                       "rowId": ".ppcp"
+                                    }  
                                 ]
                             }
                         ], "contextInfo": { "stanzaId": m.key.id,
