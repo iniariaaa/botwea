@@ -56,6 +56,7 @@ Sampah:     ${Ssampah}\n━━━━━━━━━━━━━━━━━\n━
                                 conn.reply(m.chat, `Sukses Membeli ${count} Potion Dengan Harga ${potion * count} money\n\nGunakan Potion Dengan Ketik: *${usedPrefix}use potion <jumlah>*`, m)
                             } else conn.reply(m.chat, `Uang Anda Tidak Cukup Untuk Membeli ${count} Potion Dengan Harga ${potion * count} Money `,)
                         break
+
                     case 'diamond':
                             if (global.db.data.users[m.sender].money >= Bdiamond * count) {
                                 global.db.data.users[m.sender].diamond += count * 1
@@ -104,7 +105,14 @@ Sampah:     ${Ssampah}\n━━━━━━━━━━━━━━━━━\n━
                             } else conn.reply(m.chat, `Uang Anda Tidak Cukup Untuk Membeli ${count} Sampah Dengan Harga ${Bsampah * count} Money`.trim(), m)
                         
                         break
-
+                    case 'kucing':
+                        if (global.db.data.users[m.sender].money >= Bpet * count) {
+                            global.db.data.users[m.sender].kucing += count * 1
+                            global.db.data.users[m.sender].money -= Bpet * count
+                            conn.reply(m.chat, `Sukses Membeli ${count} kucing Dengan Harga ${Bpet * count} Money `, m)
+                        } else conn.reply(m.chat, `Money Anda Tidak Cukup `, m)
+                    
+                    break
                     case 'armor':
                             if (global.db.data.users[m.sender].armor == 5) return conn.reply(m.chat, 'Armormu sudah *Level Max*', m)
                             if (global.db.data.users[m.sender].money > armor) {
