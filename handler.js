@@ -84,7 +84,7 @@ module.exports = {
             if (!isNumber(user.fishingrod)) user.fishingrod = 0
             if (!isNumber(user.fishingroddurability)) user.fishingroddurability = 0
 //mancing
-			if (!isNumber(user.paus)) user.paus = 0
+     if (!isNumber(user.paus)) user.paus = 0
      if (!isNumber(user.kepiting)) user.kepiting = 0
      if (!isNumber(user.gurita)) user.gurita = 0
      if (!isNumber(user.cumi)) user.cumi= 0
@@ -96,8 +96,19 @@ module.exports = {
      if (!isNumber(user.udang)) user.udang = 0
      if (!isNumber(user.ikan)) user.ikan = 0
      if (!isNumber(user.orca)) user.orca = 0
-        
-        if (!isNumber(user.banteng)) user.banteng = 0
+     
+     //buah
+     if (!isNumber(user.melon)) user.melon = 0
+     if (!isNumber(user.alpukat)) user.alpukat = 0
+     if (!isNumber(user.jeruk)) user.jeruk = 0
+     if (!isNumber(user.mangga)) user.mangga = 0
+     if (!isNumber(user.nanas)) user.nanas = 0
+     if (!isNumber(user.semangka)) user.semangka = 0
+     if (!isNumber(user.anggur)) user.anggur = 0
+     if (!isNumber(user.jambu)) user.jambu = 0
+     if (!isNumber(user.rambutan)) user.rambutan = 0
+     // Hewan
+     if (!isNumber(user.banteng)) user.banteng = 0
      if (!isNumber(user.harimau)) user.harimau = 0
      if (!isNumber(user.gajah)) user.gajah = 0
      if (!isNumber(user.kambing)) user.kambing = 0
@@ -154,6 +165,15 @@ module.exports = {
     level: 0,
     exp: 0,
     limit: 10,
+    anggur: 0,
+    melon: 0,
+    jambu: 0,
+    rambutan: 0,
+    mangga: 0,
+    jeruk: 0, 
+    alpukat: 0,
+    nanas: 0,
+    semangka: 0,
     lastclaim: 0,
     money: 0,
     diamond: 0,
