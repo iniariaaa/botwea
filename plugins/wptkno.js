@@ -1,21 +1,16 @@
 let fetch = require("node-fetch")
 let handler = async (m, { conn }) => {
-let res = await fetch('https://raw.githubusercontent.com/iniariaaa/randomaapi/main/wptekno.txt')
-let txt = await res.text()
-
-let arr = txt.split('\n')
-let cita = arr[Math.floor(Math.random() * arr.length)]
-conn.sendFile(m.chat, cita, 'p.jpg', 'Nih kak Wp nya!!', m, false, { contextInfo: { forwardingScore: 999, isForwarded: true }}) 
+  let res = await fetch('https://ariaapi.herokuapp.com/wptekno')
+  if (!res.ok) throw await res.text()
+  let json = await res.json()
+  if (!json.result) throw 'Err!'
+  let thumbnail = await (await fetch(json.result)).buffer()
+  conn.sendFile(m.chat, json.result, 'wp.jpg', json.caption, m, 0, { thumbnail })
 }
 
-handler.tags = ['Wp']
-handler.help = ['wp']
-handler.command = /^(rwptkno)$/i
-handler.limit = true
-handler.premium = false
+handler.help = ['rwptekno']
+handler.tags = ['internet']
 
-
-
-
+handler.command = /^(rwptekno)$/i
 
 module.exports = handler
