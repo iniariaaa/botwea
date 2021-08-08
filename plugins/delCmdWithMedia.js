@@ -11,4 +11,3 @@ module.exports = Object.assign(async function handler(m, { text }) {
     tags: ['database'],
     command: ['delcmd']
 })
-handler.owner = true
