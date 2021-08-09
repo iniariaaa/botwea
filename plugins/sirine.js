@@ -5,7 +5,7 @@ let zero = fs.readFileSync('./audio/sirine.mp3')
 conn.sendMessage(m.chat, zero, MessageType.audio, {quoted: m, mimetype: 'audio/mp4', ptt:true})
 }
 
-handler.customPrefix = /^(door)?$/i
+handler.customPrefix = /^(sirine)?$/i
 handler.command = new RegExp
 
 module.exports = handler
