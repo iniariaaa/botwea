@@ -33,7 +33,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     let username = conn.getName(who)
     let math = max - xp
     let str = `
-Nama: (@${who.replace(/@.+/, ''}))${about != 401 ? '\nInfo: ' + about : ''}
+Nama: (@${who.replace(/@.+/, '')})${about != 401 ? '\nInfo: ' + about : ''}
 Nomor: ${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}
 Link: https://wa.me/${who.split`@`[0]}${registered ? '\nUmur: ' + age : ''}
 XP: TOTAL ${exp} (${exp - min} / ${xp}) [${math <= 0 ? `Siap untuk *${usedPrefix}levelup*` : `${math} XP lagi untuk levelup`}]
