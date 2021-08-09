@@ -5,7 +5,7 @@ let handler = async (m, { conn }) => {
   let json = await res.json()
   if (!json.result) throw 'Err!'
   let thumbnail = await (await fetch(json.result.img)).buffer()
-  conn.sendFile(m.chat, json.result.img, 'p.png', json.caption, m, 0, { thumbnail })
+  conn.sendFile(m.chat, json.result.img, json.result.cersex 'p.png', json.caption, m, 0, { thumbnail })
 }
 
 handler.help = ['meme']
