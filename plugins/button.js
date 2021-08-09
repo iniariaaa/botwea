@@ -1,8 +1,11 @@
 let handler = async (m, { conn }) =>
+let { name, money, limit, exp, lastclaim, registered, regTime, age, level, role } = global.db.data.users[m.sender]
+    let { min, xp, max } = levelling.xpRange(level, global.multiplier)
+    let math = max - xp
 conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
                     "listMessage":  {
                         "title": "*List Menu AriaBotzz*",
-                        "description":"Silahkan Pilih List Menu Dibawah",
+                        "description":"Silahkan Pilih List Menu Dibawah\nLevel : %level",
                         "buttonText": "Menu disini",
                         "listType": "SINGLE_SELECT",
                         "sections": [
