@@ -5,7 +5,7 @@ let { name, money, limit, exp, lastclaim, registered, regTime, age, level, role 
 conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
                     "listMessage":  {
                         "title": "*List Menu AriaBotzz*",
-                        "description":"Silahkan Pilih List Menu Dibawah\nLevel : %level",
+                        "description":"Level : %level",
                         "buttonText": "Menu disini",
                         "listType": "SINGLE_SELECT",
                         "sections": [
