@@ -1,31 +1,16 @@
-const fetch = require('node-fetch')
-
-
-
-async function fetchJson(url) {
-ffs = await fetch(url)
-js = await ffs.json()
-return js
+let fetch = require("node-fetch")
+let handler = async (m, { conn }) => {
+  let res = await fetch('https://ariaputrapratama.herokuapp.com/api/cersex')
+  if (!res.ok) throw await res.text()
+  let json = await res.json()
+  if (!json.result) throw 'Err!'
+  let thumbnail = await (await fetch(json.result.img)).buffer()
+  conn.sendFile(m.chat, json.result.img, 'p.png', json.caption, m, 0, { thumbnail })
 }
 
- let handler  = async (m, { conn }) => {
+handler.help = ['meme']
+handler.tags = ['internet']
 
-      ss = await fetchJson('https://ariaputrapratama.herokuapp.com/api/cersex')
-      conn.sendFile(m.chat, ss.img, '', `Cerita : ${ss.result.cersex}`.trim(), m)
-
-}
-
-handler.help = ['cersex']
-handler.tags = ['dewasa']
 handler.command = /^(cersex)$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
-handler.admin = false
-handler.botAdmin = false
-handler.fail = null
-handler.limit = true
 
 module.exports = handler
