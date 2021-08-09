@@ -17,13 +17,13 @@ let handler = async (m, { conn, args, usedPrefix, DevMode }) => {
             global.db.data.users[m.sender].money -= count * 1
             //await m.reply('') //Kwkwwkkwlwlw
             if (Aku > Kamu) {
-                conn.reply(m.chat, `💰 Casino 💰\n*Kamu:* ${Kamu} Point\n*Computer:* ${Aku} Point\n\n*You LOSE*\nKamu kehilangan ${count} Uang(money)`.trim(), m)
+                conn.reply(m.chat, `💰 Casino 💰\n*Kamu:* ${Kamu} Point\n*Computer:* ${Aku} Point\n\n*You LOSE*\nKamu kehilangan ${count} Uang`.trim(), m)
             } else if (Aku < Kamu) {
                 global.db.data.users[m.sender].money += count * 2
-                conn.reply(m.chat, `💰 Casino 💰\n*Kamu:* ${Kamu} Point\n*Computer:* ${Aku} Point\n\n*You Win*\nKamu mendapatkan ${count * 2} Uang(money)`.trim(), m)
+                conn.reply(m.chat, `💰 Casino 💰\n*Kamu:* ${Kamu} Point\n*Computer:* ${Aku} Point\n\n*You Win*\nKamu mendapatkan ${count * 2} Uang`.trim(), m)
             } else {
                 global.db.data.users[m.sender].money += count * 1
-                conn.reply(m.chat, `💰 Casino 💰\n*Kamu:* ${Kamu} Point\n*Computer:* ${Aku} Point\n\n*SERI*\nKamu mendapatkan ${count * 1} Uang(money)`.trim(), m)
+                conn.reply(m.chat, `💰 Casino 💰\n*Kamu:* ${Kamu} Point\n*Computer:* ${Aku} Point\n\n*SERI*\nKamu mendapatkan ${count * 1} Uang`.trim(), m)
             }
         } else conn.reply(m.chat, `Uang(money) kamu tidak mencukupi untuk Casino silahkan *#kerja* terlebih dahulu!`.trim(), m)
     } catch (e) {
