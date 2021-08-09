@@ -35,6 +35,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 ┣➥ .tebakkata
 ┣➥ .tebakkimia
 ┣➥ .tekateki
+┣➥ .casino <jumlah>
 ┣➥ .tictactoe [nama room]
 ┃
 ┣━━°❀❬ *Thanks To* ❭❀°━━┓
