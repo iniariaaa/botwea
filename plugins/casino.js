@@ -45,7 +45,7 @@ handler.command = /^(casino)$/i
 
 handler.fail = null
 
-module.moneyorts = handler
+module.exports = handler
 
 function pickRandom(list) {
     return list[Math.floor(Math.random() * list.length)]
