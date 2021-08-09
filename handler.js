@@ -581,12 +581,12 @@ module.exports = {
     if (m.key.fromMe) return
     let chat = global.db.data.chats[m.key.remoteJid]
     if (chat.delete) return
-    await this.reply(m.key.remoteJid, `
+    await this.sendButton(m.key.remoteJid, `
 Terdeteksi @${m.participant.split`@`[0]} telah menghapus pesan
 
-Untuk mematikan fitur ini, ketik
-*.on delete*
-`.trim(), m.message, {
+ketik *.on delete* untuk mematikan pesan ini
+`.trim(), '', 'MATIKAN ANTI DELETE', ',on delete', {
+      quoted: m.message,
       contextInfo: {
         mentionedJid: [m.participant]
       }
