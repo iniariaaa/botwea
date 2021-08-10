@@ -153,3 +153,4 @@ Masih Banyak Lainnya Gk Ke Tulis.
 * [`Nurutomo`](https://github.com/nurutomo)
 * [`Ariffb25`](https://github.com/ariffb25)
 * [`Aria Putra Pratama`](https://github.com/iniariaaa)
+* [`Zero Bot`](https://github.com/ZeroChanBot)
