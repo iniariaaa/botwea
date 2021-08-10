@@ -40,6 +40,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 ┣➥ .use <item> <jumlah>
 ┣➥ .pasar <jual> <args> 
 ┣➥ .judi
+┣➥ .mining
 ┣➥ .inv
 ┃
 ┣━━°❀❬ *Thanks To* ❭❀°━━┓
