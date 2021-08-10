@@ -2,7 +2,7 @@ let handler = async (m, { conn }) =>
 conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
                     "listMessage":  {
                         "title": "*List Menu AriaBotzz*",
-                        "description":"Silahkan Pilih List Menu Dibawah\nBot Aktif Dibatas Thanks\nBagi Yang Mau Join Ke Group Silahkan Klik Link Dibawah\nhttps://chat.whatsapp.com/IdK7gOMQQpC7WdfIgtuQtn",
+                        "description":"Silahkan Pilih List Menu Dibawah\nBot Aktif Dibatas Thanks\n\nBagi Yang Mau Join Ke Group Silahkan Klik Link Dibawah\nhttps://chat.whatsapp.com/IdK7gOMQQpC7WdfIgtuQtn",
                         "buttonText": "Menu disini",
                         "listType": "SINGLE_SELECT",
                         "sections": [
