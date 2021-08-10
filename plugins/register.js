@@ -16,13 +16,17 @@ let handler = async function (m, { text, usedPrefix }) {
   user.registered = true
   let sn = createHash('md5').update(m.sender).digest('hex')
   m.reply(`
-Daftar berhasil!
-
-┌─〔 Info 〕
-├ Nama: ${name}
-├ Umur: ${age} tahun
-├ SN: ${sn}
-└────
+❒ USER TERDAFTAR
+├ Terimakasih Sudah
+├ Mendaftar Diri
+├ Dalam Data Base Bot
+╰───
+❒ INFO USER
+├ *Nama : ${name} *
+├ Umur : ${age} Tahun
+├ Sn : ${sn}
+├ Setatus : Terverifikasi ✓
+╰───
 `.trim())
 }
 handler.help = ['daftar', 'reg', 'register'].map(v => v + ' <nama>.<umur>')
