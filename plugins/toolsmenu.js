@@ -46,7 +46,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 ┣➥ .kodepos <kota> (Limit)
 ┣➥ .mememaker <teks atas>|<teks bawah>
 ┣➥ .mention <teks>
-┣➥ .nulis2 <teks>
+┣➥ .nulis <teks>
 ┣➥ .ocr (Limit)
 ┣➥ .profile [@user]
 ┣➥ .qr <teks>
