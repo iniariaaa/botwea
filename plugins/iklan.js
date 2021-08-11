@@ -22,7 +22,7 @@ let info = `🔰 -----[ 「 *IKLAN ARIABOTZ* 」 ]----- 🔰
 ◯ *HARAP HUBUNGI NOMOR DIBAWAH :*
 ◯ *wa.me/62895622729068*
 ──────────────────────────────
-🔰 -----[「 *POWERED BY ARIA GANS* 」]----- 🔰` 
+🔰 -----[「 *POWERED BY ARIABOTZ* 」]----- 🔰` 
 
 conn.fakeReply(m.chat, info, '0@s.whatsapp.net', '*BOT TERVERIFIKASI*', 'status@broadcast')
 }
