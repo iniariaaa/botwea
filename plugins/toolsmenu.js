@@ -63,6 +63,8 @@ let handler = async (m, { conn, usedPrefix }) => {
 ┣➥ .upload
 ┣➥ .wait
 ┣➥ .zodiac 2002 02 25
+┣➥ .pastebin <url>
+┣➥ .playstore <pencarian>
 ┃
 ┣━━°❀❬ *Thanks To* ❭❀°━━┓ 
 ┃
