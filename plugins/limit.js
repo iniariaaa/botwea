@@ -3,7 +3,7 @@ let handler = async (m) => {
     if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
     else who = m.sender
     let user = global.db.data.users[who]
-    m.reply(`*${user.limit}* Limit\n*${user.exp}* XP\nMoney *${user.money}*`)
+    m.reply(`💰Money: *${user.money}\n⏳Limit: ${user.limit}`)
 }
 handler.help = ['my [@user]']
 handler.tags = ['xp']
