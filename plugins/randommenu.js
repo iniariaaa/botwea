@@ -33,8 +33,8 @@ conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
                                         "title": "Random Citacita",
                                         "rowId": "citacita"
                                     }, {
-                                        "title": "Random Kata Ilham",
-                                        "rowId": ".katailham"
+                                        "title": "Random Fuck Life",
+                                        "rowId": ".fml"
                                     }, {
                                         "title": "Random Kata Bijak",
                                         "rowId": ".katabijak"
