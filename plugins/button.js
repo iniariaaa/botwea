@@ -1,5 +1,4 @@
 let handler = async (m, { conn }) =>
-let totalreg = Object.keys(global.db.data.users).length
 conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
                     "listMessage":  {
                         "title": "*List Menu AriaBotz*",
