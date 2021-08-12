@@ -5,10 +5,10 @@ let handler = async (m, { conn }) => {
     let timers = clockString(_timers) 
     let user = global.db.data.users[m.sender]
     let buttons = [
-{buttonId: 'id1', buttonText: {displayText: 'kolam'}, type: 1}, 
+{buttonId: 'id1', buttonText: {displayText: 'kebun'}, type: 1}, 
 ]
 const buttonMessage = {
-    contentText: `\n*Sepertinya Anda Sudah Kecapekan*\n*Silahkan Istirahat Dulu sekitar ${timers}*\n*Untuk bisa melanjutkan Memancing*\n`,
+    contentText: `\n*Sepertinya Anda Sudah Kecapekan*\n*Silahkan Istirahat Dulu sekitar ${timers}*\n*Untuk bisa melanjutkan Menanam*\n`,
     footerText: '©ariabotz', 
     buttons: buttons,
     headerType: 1
