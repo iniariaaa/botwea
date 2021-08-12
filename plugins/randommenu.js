@@ -59,7 +59,13 @@ conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
                                     },{
                                        "title": "Random Pp Couple",
                                        "rowId": ".ppcp"
-                                    }  
+                                    },{
+                                       "title": "Random Cerpen",
+                                       "rowId": ".cerpen"
+                                    },{
+                                       "title": "Random Quotes Pict",
+                                       "rowId": ".picts"
+                                    }    
                                 ]
                             }
                         ], "contextInfo": { "stanzaId": m.key.id,
