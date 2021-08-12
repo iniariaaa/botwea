@@ -44,7 +44,7 @@ zero5 = `${rbrb5}`
 zero6 = `${rbrb6}`
 zero7 = `${rbrb7}`
 zero8 = `${rbrb8}`
-zero8 = `${rbrb9}`
+zero9 = `${rbrb9}`
 
 hsl = `
 *《 Hasil Panen Kali Ini 》*
