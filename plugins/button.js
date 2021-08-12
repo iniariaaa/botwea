@@ -1,4 +1,4 @@
-let handler = async (m, { conn, usedPrefix: _p }) => {
+let handler = async (m, { conn }) =>
 conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
                     "listMessage":  {
                         "title": "*List Menu AriaBotz*",
