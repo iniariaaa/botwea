@@ -21,9 +21,8 @@ let handler = async (m, { conn, usedPrefix }) => {
 ┃•  *Limit :* ${limit}
 ┃•  *Level :* ${level}
 ┃•  *Money:* ${money}
-┃•  *Total Anggota : ${totalreg} Anggota
 ┃    
-┣━━°❀❬ *SOUND MENU* ❭❀°━━┓
+┣━━°❀❬ *SOUND* ❭❀°━━┓
 ┃
 ┣➥ .bass
 ┣➥ .blown
