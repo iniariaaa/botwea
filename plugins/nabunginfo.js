@@ -6,5 +6,5 @@ let handler = async (m) => {
     m.reply(`💰Money: *${user.nabungexp}*\n⏳Limit: *${user.nabunglimit}*`)
 }
 handler.tags = ['tabungan']
-handler.command = /^(nabungifo)$/i
+handler.command = /^(nabunginfo)$/i
 module.exports = handler
