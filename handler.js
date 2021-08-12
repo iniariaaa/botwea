@@ -70,6 +70,11 @@ module.exports = {
             if (!isNumber(user.anakrubah)) user.anakrubah = 0
             if (!isNumber(user.anakanjing)) user.anakanjing = 0
             if (!isNumber(user.makananpet)) user.makananpet = 0
+          
+          //nabung exp, limit dan money
+            if (!isNumber(user.nabungexp)) user.nabungexp = 0
+            if (!isNumber(user.nabunglimit)) user.nabunglimit = 0
+            if (!isNumber(user.nabungmoney)) user.nabungmoney = 0
 
             if (!isNumber(user.antispam)) user.antispam = 0
             if (!isNumber(user.antispamlastclaim)) user.antispamlastclaim = 0
@@ -148,6 +153,9 @@ module.exports = {
     hiu: 0,
     udang: 0,
     ikan: 0,
+    nabungexp: 0,
+    nabunglimit: 0,
+    nabungmoney: 0,
     orca: 0,
     banteng: 0,
     harimau: 0,
