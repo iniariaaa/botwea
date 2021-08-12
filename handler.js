@@ -103,8 +103,8 @@ module.exports = {
      if (!isNumber(user.orca)) user.orca = 0
      
      //buah
-     if (!isNumber(user.melon)) user.melon = 0
-     if (!isNumber(user.alpukat)) user.alpukat = 0
+     if (!isNumber(user.melon)) user.pisang = 0
+     if (!isNumber(user.alpukat)) user.stroberi = 0
      if (!isNumber(user.jeruk)) user.jeruk = 0
      if (!isNumber(user.mangga)) user.mangga = 0
      if (!isNumber(user.nanas)) user.nanas = 0
@@ -170,6 +170,8 @@ module.exports = {
     babi: 0,
     ayam: 0,
     healt: 100,
+    pisang: 0,
+    stroberi: 0,
     level: 0,
     exp: 0,
     limit: 10,
