@@ -1,6 +1,6 @@
 let handler = async (m, { conn, text, args }) => {
     if (!text) throw 'Masukkan Jumlah exp yang akan di tabung ...'
-    let count = (/[0-9]/g.test(args[1])) ? !args[1] || args.length < 2 ? Math.max((Math.ceil((100 - global.db.data.users[m.sender].healt) / usepotion)), 1) : Math.max(args[1], 1) : Math.max((Math.ceil((100 - global.db.data.users[m.sender].nabungexp))), 1)
+    const count = args[2] && args[2].length > 0 ? Math.min(99999999, Math.max(parseInt(args[2]), 1)) : !args[2] || args.length < 4 ? 1 :Math.min(1, count)
     global.db.data.users[m.sender].nabungexp += count
     global.db.data.users[m.sender].exp -= count
     conn.reply(m.chat, 'Berhasil menabung ${count} exp\n\nKetik #nabunginfo untuk melihat info tabungan anda ... ', m)
