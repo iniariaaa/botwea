@@ -2,8 +2,8 @@ let axios = require("axios");
 let handler = async(m, { conn, text }) => {
 
   await m.reply('Searching...')
-	axios.get(`https://ariaapi.herokuapp.com/cerpen`).then ((res) => {
-	 	let hasil = `Judul :${res.data.result}`
+	axios.get(`http://zekais-api.herokuapp.com/cerpen`).then ((res) => {
+	 	let hasil = `Judul: ${res.data.title}\nCerita: ${res.data.post}`
 
     conn.reply(m.chat, hasil, m)
 	})
