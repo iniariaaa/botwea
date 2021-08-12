@@ -5,7 +5,7 @@ let handler = async(m, { conn }) => {
   let res = await fetch('http://zekais-api.herokuapp.com/quotepic')
   if (!res.ok) throw await res.text()
   let json = await res.json()
-  if (!json.url) throw 'Error!'
+  if (!json.result) throw 'Error!'
   conn.sendFile(m.chat, json.result, '', 'Nih Quotesnya', m)
 }
 handler.help = ['quotespict']
