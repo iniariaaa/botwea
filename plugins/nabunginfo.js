@@ -5,7 +5,6 @@ let handler = async (m) => {
     let user = global.db.data.users[who]
     m.reply(`💰Money: *${user.nabungexp}*\n⏳Limit: *${user.nabunglimit}*`)
 }
-handler.help = ['my [@user]']
-handler.tags = ['xp']
-handler.command = /^(my|limit)$/i
+handler.tags = ['tabungan']
+handler.command = /^(nabungifo)$/i
 module.exports = handler
