@@ -20,6 +20,15 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       }
       chat.welcome = isEnable
       break
+    case 'antibadword':
+      if (m.isGroup) {
+        if (!(isAdmin || isOwner)) {
+          global.dfail('admin', m, conn)
+          throw false
+        }
+      }
+      chat.antiBadword = !isEnable
+      break
     case 'detect':
       if (!m.isGroup) {
         if (!isOwner) {
