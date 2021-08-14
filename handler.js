@@ -45,6 +45,7 @@ module.exports = {
             if (!isNumber(user.pet)) user.pet = 0
         
             if (!isNumber(user.pc)) user.pc = 0
+            if (!isNumber(user.warning)) user.warning = 0
             if (!isNumber(user.potion)) user.potion = 0
             if (!isNumber(user.sampah)) user.sampah = 0
             if (!isNumber(user.armor)) user.armor = 0
@@ -199,6 +200,7 @@ module.exports = {
     kucing: 0,
     kucinglastclaim: 0,
     kuda: 0,
+    warning: 0,
     kudalastclaim: 0,
     rubah: 0,
     rubahlastclaim: 0,
@@ -254,7 +256,8 @@ module.exports = {
           if (!('descUpdate' in chat)) chat.descUpdate = true
           if (!('stiker' in chat)) chat.stiker = false
           if (!('delete' in chat)) chat.delete = true
-          if (!('antiLink' in chat)) chat.antiLink = false
+          if (!('antiLink' in chat)) chat.antiLink = true
+          if (!('antiBadword' in chat)) chat.antiBadword = true
           if (!isNumber(chat.expired)) chat.expired = 0
           if (!isNumber(chat.pc)) chat.pc = 0
         } else global.db.data.chats[m.chat] = {
@@ -268,7 +271,8 @@ module.exports = {
           descUpdate: true,
           stiker: false,
           delete: true,
-          antiLink: false,
+          antiLink: true,
+          antiBadword: true,
           expired: 0,
           pc: 0,
         }
