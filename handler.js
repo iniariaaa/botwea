@@ -566,9 +566,9 @@ module.exports = {
             } finally {
               text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Selamat datang, @user!').replace('@subject', this.getName(jid)).replace('@desc', groupMetadata.desc) :
                 (chat.sBye || this.bye || conn.bye || 'Sampai jumpa, @user!')).replace(/@user/g, '@' + user.split`@`[0])
-              let wel = `https://hardianto-chan.herokuapp.com/api/tools/welcomer2?name=${encodeURIComponent(this.getName(user))}&descriminator=${user.split(`@`)[0].substr(-5)}&totalmem=${encodeURIComponent(groupMetadata.participants.length)}&namegb=${encodeURIComponent(this.getName(jid))}&ppuser=${pp}&background=https://i.ibb.co/KhtRxwZ/dark.png&apikey=hardianto`
-              let lea = `https://hardianto-chan.herokuapp.com/api/tools/leave2?name=${encodeURIComponent(this.getName(user))}&descriminator=${user.split(`@`)[0].substr(-5)}&totalmem=${encodeURIComponent(groupMetadata.participants.length)}&namegb= ${encodeURIComponent(this.getName(jid))}&ppuser=${pp}&background=https://i.ibb.co/KhtRxwZ/dark.png&apikey=hardianto`
-
+              let wel = `https://exampleapi.iniariaaa.repl.co/wlcm?name=${encodeURIComponent(this.getName(user))}&mem=${encodeURIComponent(groupMetadata.participants.length)}&gcname=${encodeURIComponent(this.getName(jid))}&picurl=${pp}&bgurl=https://c4.wallpaperflare.com/wallpaper/288/623/752/technology-asus-rog-asus-hd-wallpaper-preview.jpg`
+              let lea = `https://exampleapi.iniariaaa.repl.co/gdby?name=${encodeURIComponent(this.getName(user))}&mem=${encodeURIComponent(groupMetadata.participants.length)}&gcname=${encodeURIComponent(this.getName(jid))}&picurl=${pp}&bgurl=https://c4.wallpaperflare.com/wallpaper/288/623/752/technology-asus-rog-asus-hd-wallpaper-preview.jpg`
+              
               this.sendFile(jid, action === 'add' ? wel : lea, 'pp.jpg', text, null, false, {
                 contextInfo: {
                   mentionedJid: [user]
