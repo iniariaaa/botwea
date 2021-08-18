@@ -566,8 +566,8 @@ module.exports = {
             } finally {
               text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Selamat datang, @user!').replace('@subject', this.getName(jid)).replace('@desc', groupMetadata.desc) :
                 (chat.sBye || this.bye || conn.bye || 'Sampai jumpa, @user!')).replace(/@user/g, '@' + user.split`@`[0])
-              let wel = `https://ariarestapi.iniariaaa.repl.co/wlcm?name=${encodeURIComponent(this.getName(user))}&mem=${encodeURIComponent(groupMetadata.participants.length)}&gcname=${encodeURIComponent(this.getName(jid))}&picurl=${pp}&bgurl=https://c4.wallpaperflare.com/wallpaper/288/623/752/technology-asus-rog-asus-hd-wallpaper-preview.jpg`
-              let lea = `https://ariarestapi.iniariaaa.repl.co/gdby?name=${encodeURIComponent(this.getName(user))}&mem=${encodeURIComponent(groupMetadata.participants.length)}&gcname=${encodeURIComponent(this.getName(jid))}&picurl=${pp}&bgurl=https://c4.wallpaperflare.com/wallpaper/288/623/752/technology-asus-rog-asus-hd-wallpaper-preview.jpg`
+              let wel = `https://ariarestapi.iniariaaa.repl.co/welcome?name=${encodeURIComponent(this.getName(user))}&mem=${encodeURIComponent(groupMetadata.participants.length)}&gcname=${encodeURIComponent(this.getName(jid))}&picurl=${pp}&bgurl=https://c4.wallpaperflare.com/wallpaper/288/623/752/technology-asus-rog-asus-hd-wallpaper-preview.jpg`
+              let lea = `https://ariarestapi.iniariaaa.repl.co/goodbye?name=${encodeURIComponent(this.getName(user))}&mem=${encodeURIComponent(groupMetadata.participants.length)}&gcname=${encodeURIComponent(this.getName(jid))}&picurl=${pp}&bgurl=https://c4.wallpaperflare.com/wallpaper/288/623/752/technology-asus-rog-asus-hd-wallpaper-preview.jpg`
               
               this.sendFile(jid, action === 'add' ? wel : lea, 'pp.jpg', text, null, false, {
                 contextInfo: {
