@@ -3,7 +3,7 @@ let handler = async (m, { conn, args }) => {
    response = args.join(' ')
   if (!args[0]) throw 'Masukkan Parameter'
   m.reply('Sedang Diproses...')
-  let res = await fetch(`https://api.xteam.xyz/textpro/jokerlogo?text=${response}&APIKEY=HIRO`)
+  let res = await fetch(`https://ariarestapii.herokuapp.com/api/textpro/joker?text=${response}&apikey=aria`)
   let image = await res.buffer()
   conn.sendFile(m.chat, image, 'image.jpg', 'Nih kak', m)
 }
