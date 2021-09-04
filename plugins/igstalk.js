@@ -1,16 +1,36 @@
+let imageToBase64 = require('image-to-base64');
+let axios = require("axios");
+let handler = async(m, { conn, text }) => {
 
-const fetch = require('node-fetch')
-let handler = async (m, { conn, args, usedPrefix, command }) => {
-  if (!args[0]) throw `contoh:\n${usedPrefix + command} stikerinbot`
+    if (!text) return conn.reply(m.chat, 'Masukan Username yang akan distalk', m)
 
-  let res = await fetch(global.API('zekais', '/igs', { username: args[0] }))
-  if (!res.ok) throw await res.text()
-  let json = await res.json()
-  if (json.status != 200) throw json
-  conn.sendFile(m.chat, json.data.profilehd, 'eror.jpg', `*Nama:* ${json.data.fullname}\n*Bio:* ${json.data.bio}\n*Followers:* ${json.data.follower}\n*Following:* ${json.data.following}\n*Posts:* ${json.data.timeline}\n*Private:* ${json.data.private ? 'Ya' : 'Tidak'}`, m, false, { thumbnail: await (await fetch(json.data.profilehd)).buffer() })
+  await m.reply('Searching...')
+    axios.get('https://ariarestapii.herokuapp.com/api/ig/stalk?username=${text}&apikey=aria')
+    .then((res) => {
+      imageToBase64(res.data.Profile_pic)
+        .then(
+          (ress) => {
+            let buf = Buffer.from(ress, 'base64')
+            let hasil = `*IG STALKER*\n\nUsername : ${res.data.Username}\nFullName : ${res.data.name}\nFollowers : ${res.data.Jumlah_Followers}\nFollowing : ${res.data.Jumlah_Following}\nPost : ${res.data.Jumlah_Post}\nBio : ${res.data.Biodata}`
+
+    conn.reply(m.chat, buf, 'foto.jpg', hasil, m)
+         })
+	})
 }
-handler.help = ['igstalk <username>']
-handler.tags = ['tools']
-handler.command = /^(igstalk)$/i
+handler.help = ['igstalk','stalkig'].map(v => v + ' <@user>')
+handler.tags = ['internet']
+handler.command = /^(igstalk|stalkig)$/i
+handler.owner = false
+handler.mods = false
+handler.premium = false
+handler.group = false
+handler.private = false
+
+handler.admin = false
+handler.botAdmin = false
+
+handler.fail = null
+handler.exp = 0
 handler.limit = true
+
 module.exports = handler
