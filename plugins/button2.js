@@ -1,10 +1,11 @@
 let { MessageType } = require('@adiwajshing/baileys')
+let fs = require ('fs')
 let handler = async (m, { conn }) => {
-pp = await conn.getProfilePicture(global.conn.user.jid)
-conn.sendButtonImg(m.chat, 'Hai kak\nSaya AriaBOTZ\nSilahkan Klik Tombol Dibawah\nSilahkan Masuk Ke Group Official Kami\nhttps://chat.whatsapp.com/IdK7gOMQQpC7WdfIgtuQtn', 'https://i.ibb.co/QdZ5hgB/Screenshot-2021-0728-200112.jpg', `Powered By Aria`.trim(), 'Menu AriaBotz', '.listmenu', 'Iklan AriaBotz', '.iklan', m)
+let { name, limit, level, role, age, money, healt, premium, registered } = global.db.data.users[m.sender] 
+conn.send3ButtonImg(m.chat, '[ ARIA BOTZ ]', 'https://telegra.ph/file/67c0e8b8c34dc1c13ff13.jpg', `Pilih Menu Di Bawah Ya Kak\nDan Jangan Lupa Baca Rules Dibawah Ini\n\nSpam = Banned\nTelp = Blok\n\nFollow My Instagram\nhttps://instagram.com/iniariaaa\n\n\nMy Rest Api\n1. https://zyxmapleapirest.herokuapp.com\n2. https://ariarestapii.herokuapp.com\n\n❏ Registered : ${registered ? 'Yes': 'No'}\n❏ Name : ${name}\n❏ Age : ${age}\n❏ Ticket : ${limit}\n❏ Role : ${role}\n❏ Money : ${money}\n❏ Level : ${level}\n❏ Health : ${healt}\n❏ Premium : ${premium ? 'Yes': 'No'}\n\n Thanks To\nNurutomo\nAriffb25\nFernazer\nRudiAchil\nZeroBot\nBochillGaming\nAnd All Creator Bot`.trim(), 'LIST MENU', '.ngen', 'DONASI', '.donasi', 'OWNER', '.owner', m)
   }
-handler.help = ['Yy']
-handler.tags = ['jdhsnaj'] 
+handler.help = ['menu']
+handler.tags = ['jj'] 
 handler.command = /^(menu)$/i
 handler.owner = false
 handler.mods = false
