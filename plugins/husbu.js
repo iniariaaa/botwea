@@ -6,7 +6,7 @@ let handler = async(m, { conn }) => {
   if (!json.image) throw 'Error!'
   conn.sendFile(m.chat, json.image, '', 'Ganteng Kan Kek Gua', m)
 }
-handler.help = ['poke']
-handler.command = /^poke$/i
+handler.help = ['husbu']
+handler.command = /^husbu$/i
 
 module.exports = handler
