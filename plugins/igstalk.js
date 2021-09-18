@@ -7,11 +7,11 @@ let handler = async(m, { conn, text }) => {
   await m.reply('Searching...')
     axios.get('https://ariarestapii.herokuapp.com/api/ig/stalk?username=${text}&apikey=aria')
     .then((res) => {
-      imageToBase64(res.data.Profile_pic)
+      imageToBase64(res.data.profile)
         .then(
           (ress) => {
             let buf = Buffer.from(ress, 'base64')
-            let hasil = `*IG STALKER*\n\nUsername : ${res.data.Username}\nFullName : ${res.data.name}\nFollowers : ${res.data.Jumlah_Followers}\nFollowing : ${res.data.Jumlah_Following}\nPost : ${res.data.Jumlah_Post}\nBio : ${res.data.Biodata}`
+            let hasil = `*IG STALKER*\n\nFullName : ${res.data.fullname}\nFollowers : ${res.data.follower}\nFollowing : ${res.data.following}\nBio : ${res.data.bio}`
 
     conn.reply(m.chat, buf, 'foto.jpg', hasil, m)
          })
