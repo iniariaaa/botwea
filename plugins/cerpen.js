@@ -3,7 +3,7 @@ let handler = async(m, { conn, text }) => {
 
   await m.reply('Searching...')
 	axios.get(`https://ariarestapii.herokuapp.com/api/cerpen?apikey=aria`).then ((res) => {
-	 	let hasil = `Judul: ${res.data.result.title}\n\nCerita: ${res.data.result.cerpen}`
+	 	let hasil = `Judul: ${res.data.result.title}\n\nCerita: ${res.data.result.cerpen} ${res.data.result.\}`
 
     conn.reply(m.chat, hasil, m)
 	})
