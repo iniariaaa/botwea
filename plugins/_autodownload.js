@@ -17,7 +17,7 @@ handler.all = async function (m, { isPrems, isOwner }) {
         //     // m.reply(require('util').format(json))
         //     await this.sendVideo(m.chat, json.nowm, '*© ariabotz*', m, { thumbnail: buf })
         // }).catch(_ => _)
-        let res = await fetch(global.API('hardianto', '/api/download/tiktok', { url: m.text.split(/\n| /i)[0] }, 'apikey'))
+        let res = await fetch(global.API('aria', '/api/tiktokdl', { url: m.text.split(/\n| /i)[0] }, 'apikey'))
         if (!res.ok) throw await `${res.status} ${res.statusText}`
         let json = await res.json()
         await m.reply(global.wait)
