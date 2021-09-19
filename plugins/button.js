@@ -1,77 +1,104 @@
 let handler = async (m, { conn }) =>
 conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
-                    "listMessage":  {
-                        "title": "*List Menu AriaBotz*",
-                        "description":"Bot Aktif Di Jam\n06.00-08.00\n12.00-14.00\n21.00-23.00\n\nBagi Yang Mau Join Ke Group Silahkan Klik Link Dibawah\nhttps://chat.whatsapp.com/IdK7gOMQQpC7WdfIgtuQtn\n\n Script Botz: https://github.com/iniariaaa/botwea\n\n*THANKS TO*\n• Nurutomo\n• Ariffb25\n• Aria Putra Pratama\n• Zero Bot Ofc",
-                        "buttonText": "Menu disini",
-                        "listType": "SINGLE_SELECT",
-                        "sections": [
-                            {
-                "title": "◉ Sub Menu Ke - 1",
+                       "listMessage": {
+        "title": "MENU SELF-BOT",
+        "description": "OFF PUKUL 21.00 WIB",
+        "buttonText": "𝐊𝐥𝐢𝐤 𝐃𝐢𝐬𝐢𝐧𝐢 ⌕",
+        "listType": "SINGLE_SELECT",
+        "sections": [
+            {
+                "title": "◉ All Menu Self BOT",
                 "rows": [
                     {
-                        "title": '► TextPro Menu',
-                        "rowId": `.textpromenu`
+                        "title": '► All Menu',
+                        "rowId": `${prefix}allmenu`
                     }
                 ]
-            },{
-                                        "title": "Database Menu",
-                                        "description": "\n*I Want To Use Database Menu*",
-                                        "rowId": ".dbmenu"                 
-                                    },{
-                                        "title": "Jadibot Menu",
-                                        "description": "\n*I Want To Use Jadibot Menu*",
-                                        "rowId": ".jadibotmenu"                 
-                                    },{
-                                        "title": "Owner Menu",
-                                        "description": "\n*I Want To Use Owner Menu*",
-                                        "rowId": ".ownermenu"                 
-                                    },{
-                                        "title": "Editor Menu",
-                                        "description": "\n*I Want To Use Hentai Menu*",
-                                        "rowId": ".editormenu"
-                                    },{
-                                        "title": "Absen Menu",
-                                        "description": "\n*I Want To Use Absen Menu*",
-                                        "rowId": ".absenmenu"                 
-                                    },{
-                                        "title": "Random Menu",
-                                        "description": "\n*I Want To User Random Menu*",
-                                        "rowId": ".randommenu"
-                                    },{
-                                        "title": "Tools Menu",
-                                        "description": "\n*I Want To Use Tools Menu*",
-                                        "rowId": ".toolmenu"
-                                    },{
-                                        "title": "Rpg Menu",
-                                        "description": "\n*I Want To Use Rpg Menu*",
-                                        "rowId": ".rpgmenu"
-                                    },{
-                                        "title": "Game Menu",
-                                        "description": "\n*I Want To Use Game Menu*",
-                                        "rowId": ".gamemenu"
-                                    },{
-                                        "title": "Sticker Menu",
-                                        "description": "\n*I Want To Use Sticker Menu*",
-                                        "rowId": ".stickermenu"
-                                    },{
-                                        "title": "Info Bot Menu",
-                                        "description": "\n*I Want To Use Info Bot Menu*",
-                                        "rowId": ".infomenu"
-                                    },{
-                                        "title": "Group Menu",
-                                        "description": "\n*I Want To Use Group Menu*",
-                                        "rowId": ".groupmenu"
-                                    }
-
-                                ]
-                            }
-                        ], "contextInfo": { "stanzaId": m.key.id,
-"participant": m.sender,
-"quotedMessage": m.message
-}
+            },
+            {
+                "title": "◉ Menu ke - 1",
+                "rows": [
+                    {
+                        "title": '► Owner Menu',
+                        "rowId": `${prefix}ownermenu`
                     }
-                 }, {}), {waitForAck: true})
+                ]
+            },
+            {
+                "title": "◉ Menu ke - 2",
+                "rows": [
+                    {
+                        "title": '► Menu Maker',
+                        "rowId": `${prefix}menumaker`
+                    }
+                ]
+            },
+            {
+                "title": "◉ Menu ke - 3",
+                "rows": [
+                    {
+                        "title": '► Menu Storage',
+                        "rowId": `${prefix}menustorage`
+                    }
+                ]
+            },
+            {
+                "title": "◉ Menu ke - 4",
+                "rows": [
+                    {
+                        "title": '► Menu Convert',
+                        "rowId": `${prefix}menuconvert`
+                    }
+                ]
+            },
+            {
+                "title": "◉ Menu ke - 5",
+                "rows": [
+                    {
+                        "title": '► Menu Cecan',
+                        "rowId": `${prefix}menucecan`
+                    }
+                ]
+            },
+            {
+                "title": "◉ Menu ke - 6",
+                "rows": [
+                    {
+                        "title": '► Menu Cogan',
+                        "rowId": `${prefix}menucogan`
+                    }
+                ]
+            },
+            {
+                "title": "◉ Menu ke - 7",
+                "rows": [
+                    {
+                        "title": '► Fun Menu',
+                        "rowId": `${prefix}funmenu`
+                    }
+                ]
+            },
+            {
+                "title": "◉ Menu ke - 8",
+                "rows": [
+                    {
+                        "title": '► Download Menu',
+                        "rowId": `${prefix}downloadmenu`
+                    }
+                ]
+            },
+            {
+                "title": "◉ Menu ke - 9",
+                "rows": [
+                    {
+                        "title": '► Other Menu',
+                        "rowId": `${prefix}othermenu`
+                    }
+                ]
+            },
+        ]
+    }
+  }, {}),  {waitForAck: true})
 handler.command = ['menu']
 handler.register = true
 module.exports = handler
