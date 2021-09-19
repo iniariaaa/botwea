@@ -6,10 +6,10 @@ let handler = async (m, { conn, args }) => {
   let res = `https://ariarestapii.herokuapp.com/api/waifu?apikey=aria`
   conn.sendFile(m.chat, res, 'waifu.png', `Ini Kak`, m, false)
 }
-handler.help = ['poke'].map(v => v + ' ')
+handler.help = ['waifu'].map(v => v + ' ')
 handler.tags = ['image']
 
-handler.command = /^(poke)$/i
+handler.command = /^(waifu)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
