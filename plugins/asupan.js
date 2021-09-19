@@ -1,6 +1,6 @@
 let fetch = require("node-fetch")
 let handler = async (m, { conn }) => {
-let res = await fetch('https://raw.githubusercontent.com/VideFrelan/words/main/ptl.txt')
+let res = await fetch('https://ariarestapii.herokuapp.com/api/asupan?apikey=aria')
 let txt = await res.text()
 
 let arr = txt.split('\n')
