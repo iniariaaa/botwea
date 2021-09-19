@@ -36,7 +36,7 @@ let users = participants.map(u => u.jid)
 mediaUrl: 'https://youtu.be/ppt6ZIW20ig',
 mediaType: 2,
 title: '',
-body: 'hehe',
+body: '[ ARIABOTZ BROADCAST ]',
 thumbnailUrl: 'https://telegra.ph/file/efd304268e9b183c9f8a3.jpg'
 }}}) // *Crewbot by @Galang*
   }
