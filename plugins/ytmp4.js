@@ -6,7 +6,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 
   let res = await fetch('http://ariarestapii.herokuapp.com/api/ytmp4?url=args[0]&apikey=aria')
   if (!res.ok) throw await `${res.status} ${res.message}`
-  let json = await result.json()
+  let json = await res.json()
   if (!json.status) throw json
   await m.reply(global.wait)
   await conn.sendVideo(m.chat, json.res, `${json.desc}\n\n\n\n\n©AriaBotz`, m, { thumb: Buffer.alloc(0) })
