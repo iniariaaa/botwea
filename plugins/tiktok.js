@@ -11,7 +11,6 @@ let handler = async (m, { conn, args }) => {
 }
 
 handler.help = ['tiktok'].map(v => v + ' <url>')
-handler.tags = ['Downloader']
 handler.command = /^(tiktok)$/i
 handler.owner = false
 handler.mods = false
