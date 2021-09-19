@@ -6,15 +6,15 @@ handler.all = async function (m) {
     if (m.chat.endsWith('broadcast')) return
     if (m.fromMe) return
     if (m.isGroup) return
-    if (global.db.data.settings.groupOnly) return
-    let users = global.db.data.users[m.sender]
-    if (new Date - users.pc < 43200000) return // setiap 12 jam
-    await this.send2Button(m.chat, `
+    if (db.data.settings.groupOnly) return
+    let user = global.db.data.users[m.sender]
+    if (new Date - user.pc < 86400000) return // setiap 24 jam sekali
+    await this.sendButton(m.chat, `
 Hai, ${ucapan()}
 
-Ada yang bisa saya bantu?${m.msg.contextInfo.expiration == 604800 ? '\n\nmatiin pesan sementaranya, biar tombolnya bisa dipake' : ''}
-`.trim(), '© AriaBotz | pesan otomatis', 'MENU', '.menu', 'DONASI', '.donate')
-    users.pc = new Date * 1
+${user.banned ? 'kamu dibanned' : 'Ada yang bisa saya bantu?'}
+`.trim(), '© AriaBotz', user.banned ? 'Pemilik Bot' : 'Menu', user.banned ? '.owner' : ',?', m)
+    user.pc = new Date * 1
 }
 
 module.exports = handler
