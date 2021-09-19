@@ -11,7 +11,7 @@ conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
                 "rows": [
                     {
                         "title": '► RPG MENU',
-                        "description": "\nɪ ᴡᴀɴᴛ ᴛᴏ ᴜꜱᴇ ʀᴘɢ ᴍᴇɴᴜ",
+                        "description": "\n𝗜 𝗪𝗮𝗻𝘁 𝗧𝗼 𝗨𝘀𝗲 𝗥𝗣𝗚 𝗠𝗘𝗡𝗨",
                         "rowId": `.rpgmenu`
                     }
                 ]
