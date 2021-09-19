@@ -11,7 +11,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 
   } finally {
     let str = `
-┌─── ⳹°❀❬ TextPro Menu ❭❀°
+┌─── ⳹°❀❬ PhotoOxy Menu ❭❀°
 │✎ ${usedPrefix}bold <teks>
 │✎ ${usedPrefix}colorfull <teks>
 │✎ ${usedPrefix}army <teks>
