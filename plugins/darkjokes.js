@@ -1,20 +1,25 @@
-let fetch = require("node-fetch")
-let handler = async (m, { conn }) => {
-let res = await fetch('https://raw.githubusercontent.com/iniariaaa/randomaapi/main/darkjoke.txt')
-let txt = await res.text()
-
-let arr = txt.split('\n')
-let cita = arr[Math.floor(Math.random() * arr.length)]
-conn.sendFile(m.chat, cita, 'darkjoke.jpg', 'Tolong GELAP!', m, false, { contextInfo: { forwardingScore: 999, isForwarded: true }}) 
+let fetch = require('node-fetch')
+let handler = async (m, { conn, args }) => {
+   response = args.join(' ')
+  if (!args) throw 'Masukkan Parameter'
+  m.reply('Bentar Kak...')
+  let res = `https://ariarestapii.herokuapp.com/api/darkjokes?apikey=aria`
+  conn.sendFile(m.chat, res, 'darkjokes.jpg', `Pemuda Tersesat Dasar`, m, false)
 }
+handler.help = ['poke'].map(v => v + ' ')
+handler.tags = ['image']
 
-handler.help = ['wp']
-handler.command = /^(darkjoke)$/i
-handler.limit = true
+handler.command = /^(poke)$/i
+handler.owner = false
+handler.mods = false
 handler.premium = false
+handler.group = false
+handler.private = false
 handler.register = true
+handler.admin = false
+handler.botAdmin = false
 
-
-
+handler.fail = null
+handler.limit = true
 
 module.exports = handler
