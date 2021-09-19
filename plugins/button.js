@@ -17,20 +17,12 @@ conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
                 ]
             },
             {
-                "title": "◉ Menu ke - 1",
-                "rows": [
-                    {
-                        "title": '► Owner Menu',
-                        "rowId": `${prefix}ownermenu`
-                    }
-                ]
-            },
-            {
                 "title": "◉ Menu ke - 2",
                 "rows": [
                     {
-                        "title": '► Menu Maker',
-                        "rowId": `${prefix}menumaker`
+                        "title": '► GAME MENU',
+                        "description": "\n𝙄 𝙒𝙖𝙣𝙩 𝙏𝙤 𝙐𝙨𝙚 𝙂𝘼𝙈𝙀 𝙈𝙀𝙉𝙐",
+                        "rowId": `.gamemenu`
                     }
                 ]
             },
@@ -38,8 +30,9 @@ conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
                 "title": "◉ Menu ke - 3",
                 "rows": [
                     {
-                        "title": '► Menu Storage',
-                        "rowId": `${prefix}menustorage`
+                        "title": '► TEXTPRO MENU',
+                        "description": "\n𝗜 𝗪𝗮𝗻𝘁 𝗧𝗼 𝗨𝘀𝗲 𝗧𝗘𝗫𝗧𝗣𝗥𝗢 𝗠𝗘𝗡𝗨",
+                        "rowId": `.textpromenu`
                     }
                 ]
             },
@@ -47,8 +40,9 @@ conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
                 "title": "◉ Menu ke - 4",
                 "rows": [
                     {
-                        "title": '► Menu Convert',
-                        "rowId": `${prefix}menuconvert`
+                        "title": '► PHOTOOXY MENU',
+                        "description": "\n𝙄 𝙒𝙖𝙣𝙩 𝙏𝙤 𝙐𝙨𝙚 𝙋𝙃𝙊𝙏𝙊𝙊𝙓𝙔 𝙈𝙀𝙉𝙐",
+                        "rowId": `.photoxymenu`
                     }
                 ]
             },
@@ -56,8 +50,9 @@ conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
                 "title": "◉ Menu ke - 5",
                 "rows": [
                     {
-                        "title": '► Menu Cecan',
-                        "rowId": `${prefix}menucecan`
+                        "title": '► RANDOM MENU',
+                        "description": "\n𝙄 𝙒𝙖𝙣𝙩 𝙏𝙤 𝙐𝙨𝙚 𝙍𝘼𝙉𝘿𝙊𝙈 𝙈𝙀𝙉𝙐",
+                        "rowId": `.randommenu`
                     }
                 ]
             },
@@ -65,8 +60,9 @@ conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
                 "title": "◉ Menu ke - 6",
                 "rows": [
                     {
-                        "title": '► Menu Cogan',
-                        "rowId": `${prefix}menucogan`
+                        "title": '► GROUP MENU',
+                        "description": "\n𝙄 𝙒𝙖𝙣𝙩 𝙏𝙤 𝙐𝙨𝙚 𝙂𝙍𝙊𝙐𝙋 𝙈𝙀𝙉𝙐",
+                        "rowId": `.groupmenu`
                     }
                 ]
             },
@@ -74,8 +70,9 @@ conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
                 "title": "◉ Menu ke - 7",
                 "rows": [
                     {
-                        "title": '► Fun Menu',
-                        "rowId": `${prefix}funmenu`
+                        "title": '► STICKER MENU',
+                        "description": "\n𝙄 𝙒𝙖𝙣𝙩 𝙏𝙤 𝙐𝙨𝙚 𝙎𝙏𝙄𝘾𝙆𝙀𝙍 𝙈𝙀𝙉𝙐",
+                        "rowId": `.stickermenu`
                     }
                 ]
             },
@@ -83,8 +80,9 @@ conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
                 "title": "◉ Menu ke - 8",
                 "rows": [
                     {
-                        "title": '► Download Menu',
-                        "rowId": `${prefix}downloadmenu`
+                        "title": '► DATABASE MENU',
+                        "description": "\n𝙄 𝙒𝙖𝙣𝙩 𝙏𝙤 𝙐𝙨𝙚 𝗗𝗔𝗧𝗔𝗕𝗔𝗦𝗘 𝙈𝙀𝙉𝙐",
+                        "rowId": `.dbmenu`
                     }
                 ]
             },
@@ -92,8 +90,19 @@ conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
                 "title": "◉ Menu ke - 9",
                 "rows": [
                     {
-                        "title": '► Other Menu',
-                        "rowId": `${prefix}othermenu`
+                        "title": '► OWNER MENU',
+                        "description": "\n𝙄 𝙒𝙖𝙣𝙩 𝙏𝙤 𝙐𝙨𝙚 𝙊𝙒𝙉𝙀𝙍 𝙈𝙀𝙉𝙐",
+                        "rowId": `.ownermenu`
+                    }
+                ]
+            },
+            {
+                "title": "◉ Menu ke - 10",
+                "rows": [
+                    {
+                        "title": '► ABSEN MENU',
+                        "description": "\n𝙄 𝙒𝙖𝙣𝙩 𝙏𝙤 𝙐𝙨𝙚 𝘼𝘽𝙎𝙀𝙉 𝙈𝙀𝙉𝙐",
+                        "rowId": `.absenmenu`
                     }
                 ]
             },
