@@ -1,8 +1,8 @@
 let axios = require("axios");
 let handler = async(m, { conn, text }) => {
 
-	axios.get(`https://api.zeks.xyz/api/fml?apikey=AriaGanzTzy`).then ((res) => {
-	 	let hasil = `${res.data.result}`
+	axios.get(`https://ariarestapii.herokuapp.com/api/fml?apikey=aria`).then ((res) => {
+	 	let hasil = `${res.data.result.data.fml}`
 
     conn.reply(m.chat, hasil, m)
 	})
