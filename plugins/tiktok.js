@@ -12,7 +12,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
   //   await conn.sendVideo(m.chat, json.nowm, '*© AriaBotz*', m, { thumbnail: await (await fetch(json.nowm)).buffer() })
   // })
 
-  let res = await fetch(global.API('hardianto', '/api/download/tiktok', { url: args[0] }, 'apikey'))
+  let res = await fetch(global.API('aria', '/api/tiktokdl', { url: args[0] }, 'apikey'))
   if (!res.ok) throw await `${res.status} ${res.statusText}`
   let json = await res.json()
   if (!json.status) throw json
