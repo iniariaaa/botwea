@@ -1,17 +1,18 @@
 let handler = async (m, { conn }) =>
 conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
-                       "listMessage": {
+    "listMessage": {
         "title": "MENU SELF-BOT",
         "description": "OFF PUKUL 21.00 WIB",
         "buttonText": "𝐊𝐥𝐢𝐤 𝐃𝐢𝐬𝐢𝐧𝐢 ⌕",
         "listType": "SINGLE_SELECT",
         "sections": [
             {
-                "title": "◉ All Menu Self BOT",
+                "title": "◉ Menu Ke - 1",
                 "rows": [
                     {
-                        "title": '► All Menu',
-                        "rowId": `${prefix}allmenu`
+                        "title": '► RPG MENU',
+                        "description": "\n*I Want To Use Rpg Menu*",
+                        "rowId": `.rpgmenu`
                     }
                 ]
             },
@@ -98,7 +99,7 @@ conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
             },
         ]
     }
-  }, {}),  {waitForAck: true})
+  }, {}), {waitForAck: true})
 handler.command = ['menu']
 handler.register = true
 module.exports = handler
