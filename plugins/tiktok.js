@@ -4,7 +4,7 @@ let handler = async (m, { conn, args }) => {
   if (!args[0]) throw 'Masukkan Parameter'
   await conn.fakeReply(m.chat, '*[❗] Bntar ngab..*', '0@s.whatsapp.net', '*BOT By ZyxMapLe*', 'status@broadcast')
   let res = await fetch(`https://ariarestapii.herokuapp.com/api/tiktokdl?url=${response}&apikey=aria`)
-  if (res.status !== 200) throw await res.text()
+  if (res.Status !== 200) throw await res.text()
   let json = await res.json()
   let video = json.result.WithWM
   conn.sendFile(m.chat, video, `tiktok.mp4`, `Ini Kak`, m)
