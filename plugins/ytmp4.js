@@ -8,7 +8,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
   let json = await res.json()
   if (!json.status) throw json
   await m.reply(global.wait)
-  await conn.sendVideo(m.chat, json.res, `${json.desc}\n\n\n\n\n©AriaBotz`, m, { thumb: Buffer.alloc(0) })
+  await conn.sendVideo(m.chat, json.result, `${json.desc}\n\n\n\n\n©AriaBotz`, m, { thumb: Buffer.alloc(0) })
 
 }
 handler.help = ['ytmp4'].map(v => v + ' <url>')
