@@ -4,7 +4,7 @@ let handler = async (m, { conn, args }) => {
   if (!args) throw 'Masukkan Parameter'
   m.reply('Bentar Kak...')
   let res = `https://ariarestapii.herokuapp.com/api/waifu?apikey=aria`
-  conn.sendFile(m.chat, res, 'waifu.jpg', `Ini Tuan`, m, false)
+  conn.sendFile(m.chat, res, 'waifu.png', `Ini Kak`, m, false)
 }
 handler.help = ['poke'].map(v => v + ' ')
 handler.tags = ['image']
