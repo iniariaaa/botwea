@@ -6,13 +6,20 @@ handler.all = async function (m, { isBlocked }) {
     if (isBlocked) return
     if (m.isBaileys) return
     if (m.chat.endsWith('broadcast')) return
-    let setting = global.db.data.settings
-    let { isBanned } = global.db.data.chats[m.chat]
+    let setting = db.data.settings[this.user.jid]
+    let { isBanned } = db.data.chats[m.chat]
+    let { banned } = db.data.users[m.sender]
 
     // ketika ditag
     try {
         if (m.mentionedJid.includes(this.user.jid) && m.isGroup) {
-            await this.send2Button(m.chat, `uhm.. iya ada apa?${m.msg.contextInfo.expiration == 604800 ? '\n\nmatiin pesan sementaranya, biar tombolnya bisa dipake' : ''}`.trim(), '© ariabotz | pesan otomatis', `${isBanned ? 'UNBAN' : 'MENU'}`, `${isBanned ? '.unban' : '.menu'}`, `${!m.isGroup ? 'DONASI' : isBanned ? 'UNBAN' : 'BAN'}`, `${!m.isGroup ? '.donasi' : isBanned ? '.unban' : '.ban'}`)
+            await this.send2Button(m.chat,
+                isBanned ? 'AriaBotz tidak aktif' : banned ? 'kamu dibanned' : 'ariaBotz disini',
+                '© AriaBotz',
+                isBanned ? 'Unban' : banned ? 'Pemilik Bot' : 'Menu',
+                isBanned ? '.unban' : banned ? '.owner' : '.menu',
+                m.isGroup ? 'Ban' : isBanned ? 'Unban' : 'Donasi',
+                m.isGroup ? '.ban' : isBanned ? '.unban' : '.donasi', m)
         }
     } catch (e) {
         return
@@ -20,14 +27,11 @@ handler.all = async function (m, { isBlocked }) {
 
     // ketika ada yang invite/kirim link grup di chat pribadi
     if ((m.mtype === 'groupInviteMessage' || m.text.startsWith('https://chat') || m.text.startsWith('Buka tautan ini')) && !m.isBaileys && !m.isGroup) {
-        this.reply(m.chat, `┌〔 Undang Bot ke Grup 〕
-│ 
-├ 7 Hari / Rp 7.000
-├ 30 Hari / Rp 15.000
-│ 
-├ Hubungi @${global.owner[0]}
+        this.sendButton(m.chat, `┌〔 Undang Bot ke Grup 〕
+├ 7 Hari / Rp 5,000
+├ 30 Hari / Rp 10,000
 └────
-`.trim(), m, { contextInfo: { mentionedJid: [global.owner[0] + '@s.whatsapp.net'] } })
+`.trim(), '© AriaBotz', 'Pemilik Bot', '.owner', m)
     }
 
     // salam
