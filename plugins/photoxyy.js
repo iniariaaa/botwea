@@ -11,31 +11,21 @@ let handler = async (m, { conn, usedPrefix }) => {
 
   } finally {
     let str = `
-┌─── ⳹°❀❬ Editor Menu ❭❀°
-│✎ ${usedPrefix}gay
-│✎ ${usedPrefix}trigger
-│✎ ${usedPrefix}ytcomment <teks>
-│✎ ${usedPrefix}neon <teks>
-│✎ ${usedPrefix}pubg <teks>|<teks>
-│✎ ${usedPrefix}glitch <teks>|<teks>
-│✎ ${usedPrefix}coffecup <teks>
-│✎ ${usedPrefix}bfid <teks>|<teks>
-│✎ ${usedPrefix}wooden <teks>
-│✎ ${usedPrefix}glow <teks>
-│✎ ${usedPrefix}textburn <teks>
-│✎ ${usedPrefix}summer <teks>
-│✎ ${usedPrefix}love <teks>
-│✎ ${usedPrefix}joker <teks>
-│✎ ${usedPrefix}epep <teks>
+┌─── ⳹°❀❬ TextPro Menu ❭❀°
+│✎ ${usedPrefix}bold <teks>
+│✎ ${usedPrefix}colorfull <teks>
+│✎ ${usedPrefix}army <teks>
+│✎ ${usedPrefix}poly <teks>
+│✎ ${usedPrefix}retro <teks>
 └────────────┈ ⳹ ❋ཻུ۪۪⸙
 `.trim()
     let mentionedJid = [who]
     conn.sendFile(m.chat, pp, 'lp.jpg', str, m, false, { contextInfo: { mentionedJid }})
   }
 }
-handler.help = ['editormenu']
-handler.tags = ['jj']
-handler.command = /^(editormenu)$/i
+handler.help = ['photoxymenu']
+handler.tags = ['photooxy']
+handler.command = /^(photoxymenu)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
