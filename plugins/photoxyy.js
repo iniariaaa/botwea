@@ -17,6 +17,11 @@ let handler = async (m, { conn, usedPrefix }) => {
 │✎ ${usedPrefix}army <teks>
 │✎ ${usedPrefix}poly <teks>
 │✎ ${usedPrefix}retro <teks>
+│✎ ${usedPrefix}shadow <teks>
+│✎ ${usedPrefix}banner <teks>
+│✎ ${usedPrefix}rainbow <teks>
+│✎ ${usedPrefix}smoke <teks>
+│✎ ${usedPrefux}flaming <teks>
 └────────────┈ ⳹ ❋ཻུ۪۪⸙
 `.trim()
     let mentionedJid = [who]
