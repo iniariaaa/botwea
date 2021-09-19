@@ -7,7 +7,7 @@ let handler = async (m, { conn, args }) => {
   conn.sendFile(m.chat, res, 'poly.mp4', `Ini Kak`, m, false)
 }
 handler.help = ['bold'].map(v => v + ' <teks>')
-handler.tags = ['textpro']
+handler.tags = ['photooxy']
 
 handler.command = /^(bold)$/i
 handler.owner = false
