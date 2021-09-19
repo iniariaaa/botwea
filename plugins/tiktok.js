@@ -1,29 +1,29 @@
-const { tiktok } = require('../lib/scrape')
 let fetch = require('node-fetch')
-let handler = async (m, { conn, args, usedPrefix, command }) => {
-
-  if (!args[0]) throw `*Perintah ini untuk mengunduh video tiktok dengan link*\n\ncontoh:\n${usedPrefix + command} https://vt.tiktok.com/yqyjPX/`
-  if (!args[0].match(/tiktok/gi)) throw `*Link salah! Perintah ini untuk mengunduh video tiktok dengan link*\n\ncontoh:\n${usedPrefix + command} https://vt.tiktok.com/yqyjPX/`
-
-  // tiktok(args[0]).then(async res => {
-  //   let tiktok = JSON.stringify(res)
-  //   let json = JSON.parse(tiktok)
-  //   // m.reply(require('util').format(json))
-  //   await conn.sendVideo(m.chat, json.nowm, '*© AriaBotz*', m, { thumbnail: await (await fetch(json.nowm)).buffer() })
-  // })
-
-  let res = await fetch(global.API('aria', '/api/tiktokdl', { url: args[0] }, 'apikey'))
-  if (!res.ok) throw await `${res.status} ${res.statusText}`
+let handler = async (m, { conn, args }) => {
+   response = args.join(' ')
+  if (!args[0]) throw 'Masukkan Parameter'
+  await conn.fakeReply(m.chat, '*[❗] Bntar ngab..*', '0@s.whatsapp.net', '*BOT By ZyxMapLe*', 'status@broadcast')
+  let res = await fetch(`https://ariarestapii.herokuapp.com/api/tiktokdl?url=${response}&apikey=aria`)
+  if (res.status !== 200) throw await res.text()
   let json = await res.json()
-  if (!json.status) throw json
-  await m.reply(global.wait)
-  await conn.sendVideo(m.chat, json.WithWM, `${json.caption}\n\n\n\n\n©AriaBotz`, m, { thumbnail: Buffer.alloc(0) })
-
+  let video = json.result.WithWM
+  conn.sendFile(m.chat, video, `tiktok.mp4`, `Judul: ${json.result.judul}`, m)
 }
-handler.help = ['tiktok'].map(v => v + ' <url>')
-handler.tags = ['downloader']
-handler.command = /^(tiktok)$/i
 
+handler.help = ['tiktok'].map(v => v + ' <url>')
+handler.tags = ['Downloader']
+handler.command = /^(tiktok)$/i
+handler.owner = false
+handler.mods = false
+handler.premium = false
+handler.group = false
+handler.private = false
+
+handler.admin = false
+handler.botAdmin = false
+
+handler.fail = null
+handler.exp = 0
 handler.limit = true
 
 module.exports = handler
