@@ -1,29 +1,20 @@
 let fetch = require('node-fetch')
-let handler = async (m, { conn, args }) => {
-   response = args.join(' ')
-  if (!args[0]) throw 'Masukkan Parameter'
-  await conn.fakeReply(m.chat, '*[❗] Bntar ngab..*', '0@s.whatsapp.net', '*BOT By ZyxMapLe*', 'status@broadcast')
-  let res = await fetch(`https://ariarestapii.herokuapp.com/api/mediafire2?url=${response}&apikey=aria`)
+let handler = async (m, { conn, args, usedPrefix, command }) => {
+
+  if (!args[0]) throw `*Perintah ini untuk mengunduh video tiktok dengan link*\n\ncontoh:\n${usedPrefix + command}`
+
+  let res = await fetch('https://ariarestapii.herokuapp.com/api/mediafire2?url=${response}&apikey=aria')
   if (res.Status !== 200) throw await res.text()
   let json = await res.json()
-  let video = json.result.WithWM
-  conn.sendVideo(m.chat, video, `tiktok.mp4`, `Ini Kak`, m)
+  if (!json.status) throw json
+  await m.reply(global.wait)
+  await conn.sendVideo(m.chat, json.res, `©AriaBotz`, m, { thumb: Buffer.alloc(0) })
+
 }
-
-handler.help = ['tiktokaudio'].map(v => v + ' <url>')
+handler.help = ['tiktok'].map(v => v + ' <url>')
 handler.tags = ['downloader']
-handler.command = /^(tiktokwm)$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
+handler.command = /^(tiktok)$/i
 
-handler.admin = false
-handler.botAdmin = false
-
-handler.fail = null
-handler.exp = 0
 handler.limit = true
 
 module.exports = handler
