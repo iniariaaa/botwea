@@ -1,8 +1,8 @@
 let handler = async (m, { conn }) =>
 conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
     "listMessage": {
-        "title": "MENU SELF-BOT",
-        "description": "OFF PUKUL 21.00 WIB",
+        "title": "MENU ARIA BOTZ",
+        "description":"Bot Aktif Di Jam\n06.00-08.00\n12.00-14.00\n21.00-23.00\n\nBagi Yang Mau Join Ke Group Silahkan Klik Link Dibawah\nhttps://chat.whatsapp.com/IdK7gOMQQpC7WdfIgtuQtn\n\n Script Botz: https://github.com/iniariaaa/botwea\n\n*THANKS TO*\n• Nurutomo\n• Ariffb25\n• Aria Putra Pratama\n• Zero Bot Ofc",
         "buttonText": "𝐊𝐥𝐢𝐤 𝐃𝐢𝐬𝐢𝐧𝐢 ⌕",
         "listType": "SINGLE_SELECT",
         "sections": [
