@@ -11,7 +11,7 @@ key: {
 				"product": {
 					"productImage":{
 						"mimetype": "image/jpeg",
-						"jpegThumbnail": fs.readFileSync('./src/cha.jpg'), //Gambarnye
+						"jpegThumbnail": fs.readFileSync('./src/IMG-20210917-WA0002.jpg'), //Gambarnye
 					},
 					"title": `BROADCAST`, //Kasih namalu 
 					"description": `Rp 50,000`, 
