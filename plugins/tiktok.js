@@ -7,11 +7,12 @@ let handler = async (m, { conn, args }) => {
   if (res.status !== 200) throw await res.text()
   let json = await res.json()
   let video = json.result.WithWM
-  conn.sendFile(m.chat, video, `tiktok.mp4`, `Judul: ${json.result.judul}`, m)
+  conn.sendFile(m.chat, video, `tiktok.mp4`, `Ini Kak`, m)
 }
 
-handler.help = ['tiktok'].map(v => v + ' <url>')
-handler.command = /^(tiktok)$/i
+handler.help = ['tiktokaudio'].map(v => v + ' <url>')
+handler.tags = ['downloader']
+handler.command = /^(tiktokwm)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
