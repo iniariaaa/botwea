@@ -10,15 +10,6 @@ handler.all = async function (m, { isPrems, isOwner }) {
 
     if (m.chat.endsWith('broadcast')) return
 
-        if (/^.*tiktok/i.test(m.text)) {
-        let res = await fetch(API('aria', '/api/tiktokdl', { url }, 'apikey'))
-        if (!res.ok) return m.reply(eror)
-        let json = await res.json()
-        await m.reply(wait)
-        // m.reply(util.format(json))
-        await this.sendFile(m.chat, json.WithWM, '', '© ariabotz', m)
-    }
-
     if (/^.*cocofun/i.test(m.text)) {
         let res = await fetch(global.API('jojo', '/api/cocofun-no-wm', { url: m.text.split(/\n| /i)[0] }))
         if (!res.ok) throw await res.text()
