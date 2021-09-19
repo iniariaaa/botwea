@@ -10,19 +10,13 @@ handler.all = async function (m, { isPrems, isOwner }) {
 
     if (m.chat.endsWith('broadcast')) return
 
-    if (/^.*tiktok/i.test(m.text)) {
-        // tiktok(m.text).then(async res => {
-        //     let tiktok = JSON.stringify(res)
-        //     let json = JSON.parse(tiktok)
-        //     // m.reply(require('util').format(json))
-        //     await this.sendVideo(m.chat, json.nowm, '*© ariabotz*', m, { thumbnail: buf })
-        // }).catch(_ => _)
-        let res = await fetch(global.API('aria', '/api/tiktokdl', { url: m.text.split(/\n| /i)[0] }, 'apikey'))
-        if (!res.ok) throw await `${res.status} ${res.statusText}`
+        if (/^.*tiktok/i.test(m.text)) {
+        let res = await fetch(API('aria', '/api/tiktokdl', { url }, 'apikey'))
+        if (!res.ok) return m.reply(eror)
         let json = await res.json()
-        await m.reply(global.wait)
-        m.reply(util.format(json))
-        await this.sendVideo(m.chat, json.wm, '© ariabotz', m)
+        await m.reply(wait)
+        // m.reply(util.format(json))
+        await this.sendFile(m.chat, json.WithWM, '', '© ariabotz', m)
     }
 
     if (/^.*cocofun/i.test(m.text)) {
