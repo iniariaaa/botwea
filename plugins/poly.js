@@ -6,7 +6,7 @@ let handler = async (m, { conn, args }) => {
   let res = `https://ariarestapii.herokuapp.com/api/oxy/poly?text=${response}&apikey=aria`
   conn.sendFile(m.chat, res, 'poly.mp4', `Ini Kak`, m, false)
 }
-handler.help = ['poly'].map(v => v + ' ')
+handler.help = ['poly'].map(v => v + ' <teks>')
 handler.tags = ['image']
 
 handler.command = /^(poly)$/i
