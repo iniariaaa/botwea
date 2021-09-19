@@ -6,10 +6,10 @@ let handler = async (m, { conn, args }) => {
   let res = `https://ariarestapii.herokuapp.com/api/oxy/bold?text=${response}&apikey=aria`
   conn.sendFile(m.chat, res, 'poly.mp4', `Ini Kak`, m, false)
 }
-handler.help = ['poly'].map(v => v + ' <teks>')
-handler.tags = ['image']
+handler.help = ['bold'].map(v => v + ' <teks>')
+handler.tags = ['textpro']
 
-handler.command = /^(poly)$/i
+handler.command = /^(bold)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
