@@ -4,7 +4,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
   if (!args[0]) throw `*Perintah ini untuk mengunduh video tiktok dengan link*\n\ncontoh:\n${usedPrefix + command}`
 
   let res = await fetch('http://ariarestapii.herokuapp.com/api/ytmp4?url=args[0]&apikey=aria')
-  if (!res.ok) throw await `${res.status} ${res.statusText}`
+  if (res.status !== 200) throw await res.text()
   let json = await res.json()
   if (!json.status) throw json
   await m.reply(global.wait)
