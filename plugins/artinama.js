@@ -1,7 +1,7 @@
 let fetch = require('node-fetch')
 
 const artinama_api = [
-  ['xteam', '/api/artinama', 'nama', 'APIKEY', json => {
+  ['xteam', '/api/artinama', 'nama', 'apikey', json => {
     if (!json.status) throw json
     return `
 *Arti:* ${json.data.result}
