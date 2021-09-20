@@ -1,25 +1,10 @@
 let fetch = require('node-fetch')
 
 const artinama_api = [
-  ['xteam', '/primbon/artinama', 'q', 'APIKEY', json => {
+  ['xteam', '/api/artinama', 'nama', 'APIKEY', json => {
     if (!json.status) throw json
     return `
-*Nama:* ${json.result.nama}
-*Arti:* ${json.result.arti}
-
-*Makna:* ${json.result.maksud}
-`.trim()
-  }],
-  ['http://nzcha-apii.herokuapp.com', '/artinama', 'nama', null, json => {
-    if (!json.status) throw json
-    return `
-*Arti:* ${json.result}
-`.trim()
-  }],
-  ['https://scrap.terhambar.com', '/nama', 'n', null, json => {
-    if (!json.status) throw json
-    return `
-*Arti:* ${json.result.arti}
+*Arti:* ${json.data.result}
 `.trim()
   }]
 ]
