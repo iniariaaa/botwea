@@ -30,9 +30,9 @@ conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
                 "title": "◉ Menu ke - 3",
                 "rows": [
                     {
-                        "title": '► TEXTPRO MENU',
-                        "description": "\n𝗜 𝗪𝗮𝗻𝘁 𝗧𝗼 𝗨𝘀𝗲 𝗧𝗘𝗫𝗧𝗣𝗥𝗢 𝗠𝗘𝗡𝗨",
-                        "rowId": `.textpromenu`
+                        "title": '► SEARCHING MENU',
+                        "description": "\n𝗜 𝗪𝗮𝗻𝘁 𝗧𝗼 𝗨𝘀𝗲 𝗦𝗘𝗔𝗥𝗖𝗛𝗜𝗡𝗚 𝗠𝗘𝗡𝗨",
+                        "rowId": `.searchmenu`
                     }
                 ]
             },
@@ -40,8 +40,8 @@ conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
                 "title": "◉ Menu ke - 4",
                 "rows": [
                     {
-                        "title": '► PHOTOOXY MENU',
-                        "description": "\n𝙄 𝙒𝙖𝙣𝙩 𝙏𝙤 𝙐𝙨𝙚 𝙋𝙃𝙊𝙏𝙊𝙊𝙓𝙔 𝙈𝙀𝙉𝙐",
+                        "title": '► PHOTOOXT/TEXTPRO MENU',
+                        "description": "\n𝙄 𝙒𝙖𝙣𝙩 𝙏𝙤 𝙐𝙨𝙚 𝗣𝗛𝗢𝗧𝗢𝗢𝗫𝗬 / 𝗧𝗘𝗫𝗧𝗣𝗥𝗢 𝙈𝙀𝙉𝙐",
                         "rowId": `.photoxymenu`
                     }
                 ]
