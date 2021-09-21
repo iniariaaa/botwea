@@ -21,12 +21,12 @@
   },
   "homepage": "https://github.com/iniariaaa/botwea",
   "dependencies": {
-    "@adiwajshing/baileys": "github:adiwajshing/baileys",
+    "@adiwajshing/baileys": "^3.5.2",
     "awesome-phonenumber": "^2.54.0",
     "axios": "^0.21.1",
     "brainly-scraper-v2": "^2.0.3",
+    "canvacord": "^5.2.3",
     "cfonts": "^2.9.3",
-    "wa-sticker-formatter": "^3.6.0",
     "chalk": "^4.1.1",
     "cheerio": "^1.0.0-rc.10",
     "emoji-api": "^1.0.2",
@@ -36,19 +36,18 @@
     "form-data": "^4.0.0",
     "g-i-s": "^2.1.6",
     "google-it": "^1.6.2",
-    "knights-canvas": "^1.2.7",
     "got": "^11.8.2",
-    "canvacord": "^5.2.3",
     "human-readable": "^0.2.1",
     "img2braille": "^1.0.1",
     "jsbarcode": "^3.11.4",
     "jsdom": "^16.6.0",
+    "knights-canvas": "^1.2.7",
     "lodash": "^4.17.21",
     "lowdb": "^2.1.0",
     "moment-timezone": "^0.5.33",
     "node-fetch": "^2.6.1",
     "node-gtts": "^2.0.2",
-    "node-webpmux": "^3.0.0",
+    "node-webpmux": "^3.1.0",
     "qrcode": "^1.4.4",
     "qrcode-terminal": "^0.12.0",
     "similarity": "^1.2.1",
@@ -57,8 +56,11 @@
     "terminal-image": "^2.0.0",
     "translate-google-api": "^1.0.4",
     "url-regex": "^5.0.0",
+    "wa-sticker-formatter": "^3.6.0",
     "xmldom": "^0.6.0",
     "yargs": "^17.0.1",
     "yt-search": "^2.9.0"
+  }
+}
   }
 }
