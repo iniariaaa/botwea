@@ -1,8 +1,13 @@
 {
-  "name": "ariabotz",
-  "version": "1.1.1",
+  "name": "botwea",
+  "version": "1.1.2",
   "description": "WhatsApp Bot Ringan",
   "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "src": "src",
+    "plugins": "plugins"
+  },
   "scripts": {
     "start": "node index.js --self",
     "test": "node test.js"
@@ -14,14 +19,14 @@
   "keywords": [
     "whatsapp-bot"
   ],
-  "author": "AriaPutra",
+  "author": "Aria Putra Pratama",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/iniariaaa/botwea/issues"
   },
   "homepage": "https://github.com/iniariaaa/botwea",
   "dependencies": {
-    "@adiwajshing/baileys": "^github:adiwajshing/baileys",
+    "@adiwajshing/baileys": "^3.5.2",
     "awesome-phonenumber": "^2.54.0",
     "axios": "^0.21.1",
     "brainly-scraper-v2": "^2.0.3",
@@ -60,7 +65,5 @@
     "xmldom": "^0.6.0",
     "yargs": "^17.0.1",
     "yt-search": "^2.9.0"
-  }
-}
   }
 }
