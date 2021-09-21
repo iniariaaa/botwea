@@ -2,7 +2,6 @@ let util = require('util')
 let fetch = require('node-fetch')
 let simple = require('./lib/simple')
 const uploadImage = require('./lib/uploadImage')
-const knights = require('knights-canvas')
 let { MessageType } = require('@adiwajshing/baileys')
 
 const isNumber = x => typeof x === 'number' && !isNaN(x)
@@ -32,7 +31,9 @@ module.exports = {
             if (!isNumber(user.healt)) user.healt = 0
             if (!isNumber(user.level)) user.level = 0
             if (!isNumber(user.exp)) user.exp = 0
-            if (!isNumber(user.limit)) user.limit = 10
+	    if (!isNumber(user.coin)) user.coin = 0
+            if (!isNumber(user.limit)) user.limit = 20
+            if (!isNumber(user.tigame)) user.tigame = 10
             if (!isNumber(user.lastclaim)) user.lastclaim = 0
             if (!isNumber(user.money)) user.money = 0
             
@@ -176,7 +177,7 @@ module.exports = {
     stroberi: 0,
     level: 0,
     exp: 0,
-    limit: 10,
+    limit: 20,
     anggur: 0,
     melon: 0,
     jambu: 0,
@@ -257,10 +258,10 @@ module.exports = {
           if (!('descUpdate' in chat)) chat.descUpdate = true
           if (!('stiker' in chat)) chat.stiker = false
           if (!('delete' in chat)) chat.delete = true
-          if (!('antiLink' in chat)) chat.antiLink = false
-          if (!isNumber(chat.expired)) chat.expired = 0
+          if (!('antiLink' in chat)) chat.antiLink = true
           if (!('antiBadword' in chat)) chat.antiBadword = true
-          if (!('viewonce' in chat)) chat.viewonce = true
+          if (!isNumber(chat.expired)) chat.expired = 0
+          if (!isNumber(chat.pc)) chat.pc = 0
         } else global.db.data.chats[m.chat] = {
           isBanned: false,
           welcome: false,
@@ -272,14 +273,14 @@ module.exports = {
           descUpdate: true,
           stiker: false,
           delete: true,
-          antiLink: false,
-          expired: 0,
+          antiLink: true,
           antiBadword: true,
-          viewonce: true,
+          expired: 0,
+          pc: 0,
         }
 
-        let settings = global.db.data.settings[this.user.jid]
-        if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}
+        let settings = global.db.data.settings
+        if (typeof settings !== 'object') global.db.data.settings = {}
         if (settings) {
           if (!'anon' in settings) settings.anon = true
           if (!'anticall' in settings) settings.anticall = true
@@ -291,7 +292,7 @@ module.exports = {
           if (!'jadibot' in settings) settings.groupOnly = false
           if (!'nsfw' in settings) settings.nsfw = true
           if (!isNumber(settings.status)) settings.status = 0
-        } else global.db.data.settings[this.user.jid] = {
+        } else global.db.data.settings = {
           anon: true,
           anticall: true,
           antispam: true,
@@ -334,14 +335,14 @@ module.exports = {
       let isROwner = [global.conn.user.jid, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
       let isOwner = isROwner || m.fromMe
       let isMods = isOwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+      if (!isOwner && !m.isGroup && global.db.data.settings.groupOnly) return
       let isPrems = isROwner || global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
-      if (!isPrems && !m.isGroup && global.db.data.settings.groupOnly) return
       let groupMetadata = m.isGroup ? this.chats.get(m.chat).metadata || await this.groupMetadata(m.chat) : {} || {}
       let participants = m.isGroup ? groupMetadata.participants : [] || []
       let user = m.isGroup ? participants.find(u => u.jid == m.sender) : {} // User Data
       let bot = m.isGroup ? participants.find(u => u.jid == this.user.jid) : {} // Data Kamu (bot)
-      let isAdmin = user?.isAdmin || user?.isSuperAdmin || false // Apakah user admin?
-      let isBotAdmin = bot?.isAdmin || bot?.isSuperAdmin || false // Apakah kamu (bot) admin?
+      let isAdmin = user.isAdmin || user.isSuperAdmin || false // Apakah user admin?
+      let isBotAdmin = bot.isAdmin || bot.isSuperAdmin || false // Apakah kamu (bot) admin?
       let isBlocked = this.blocklist.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').filter(v => v != this.user.jid).includes(m.sender) // Apakah user diblokir?
       for (let name in global.plugins) {
         let plugin = global.plugins[name]
@@ -353,7 +354,7 @@ module.exports = {
         let match = (_prefix instanceof RegExp ? // RegExp Mode?
           [[_prefix.exec(m.text), _prefix]] :
           Array.isArray(_prefix) ? // Array?
-            _prefix.map(p => {
+    _prefix.map(p => {
               let re = p instanceof RegExp ? // RegExp in Array?
                 p :
                 new RegExp(str2Regex(p))
@@ -490,7 +491,7 @@ module.exports = {
             m.error = e
             console.error(e)
             if (e) {
-              let text = util.format(e.message ? e.message : e)
+              let text = util.format(e)
               for (let key of Object.values(global.APIKeys))
                 text = text.replace(new RegExp(key, 'g'), 'apikey')
               m.reply(text)
@@ -504,7 +505,7 @@ module.exports = {
                 console.error(e)
               }
             }
-            // if (m.limit) m.reply(+ m.limit + ' Limit terpakai') // Jadikan sebagai komentar jika kamu risih dengan pesan ini
+            if (m.limit) m.reply(+ m.limit + ' Limit terpakai') // Jadikan sebagai komentar jika kamu risih dengan pesan ini
           }
           break
         }
@@ -559,35 +560,20 @@ module.exports = {
         if (chat.welcome) {
           let groupMetadata = await this.groupMetadata(jid)
           for (let user of participants) {
-            // let pp = './src/avatar_contact.png'
-            let pp = 'https://i.ibb.co/jr9Nh6Q/Thumb.jpg'
-            let ppgc = 'https://i.ibb.co/jr9Nh6Q/Thumb.jpg'
+            let pp = 'https://i.ibb.co/fHDx30X/20210725-125918.jpg'
+           // let pp = 'https://i.ibb.co/jr9Nh6Q/Thumb.jpg'
             try {
               pp = await uploadImage(await (await fetch(await this.getProfilePicture(user))).buffer())
-              ppgc = await uploadImage(await (await fetch(await this.getProfilePicture(jid))).buffer())
             } catch (e) {
             } finally {
-              text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Selamat datang, @user!').replace('@subject', this.getName(jid)).replace('@desc', groupMetadata.desc ? String.fromCharCode(8206).repeat(4001) + groupMetadata.desc : '') :
+              text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Selamat datang, @user!').replace('@subject', this.getName(jid)).replace('@desc', groupMetadata.desc) :
                 (chat.sBye || this.bye || conn.bye || 'Sampai jumpa, @user!')).replace(/@user/g, '@' + user.split`@`[0])
-              let wel = await new knights.Welcome()
-                .setUsername(this.getName(user))
-                .setGuildName(this.getName(jid))
-                .setGuildIcon(ppgc)
-                .setMemberCount(groupMetadata.participants.length)
-                .setAvatar(pp)
-                .setBackground("https://i.ibb.co/KhtRxwZ/dark.png")
-                .toAttachment()
+              let wel = `https://hardianto-chan.herokuapp.com/api/tools/welcomer2?name=${encodeURIComponent(this.getName(user))}&descriminator=${user.split(`@`)[0].substr(-5)}&totalmem=${encodeURIComponent(groupMetadata.participants.length)}&namegb=${encodeURIComponent(this.getName(jid))}&ppuser=${pp}&background=https://i.ibb.co/KhtRxwZ/dark.png&apikey=hardianto`
+              let lea = `https://hardianto-chan.herokuapp.com/api/tools/leave2?name=${encodeURIComponent(this.getName(user))}&descriminator=${user.split(`@`)[0].substr(-5)}&totalmem=${encodeURIComponent(groupMetadata.participants.length)}&namegb=${encodeURIComponent(this.getName(jid))}&ppuser=${pp}&background=https://i.ibb.co/KhtRxwZ/dark.png&apikey=hardianto`
+              
+	      //this.sendButtonLoc(jid, action === 'add' ? await fetch(wel : lea).buffer(), text.trim(), '®Zyxmaple', 'WELCOME BRO', 'welcome', null, false, {
 
-              let lea = await new knights.Goodbye()
-                .setUsername(this.getName(user))
-                .setGuildName(this.getName(jid))
-                .setGuildIcon(ppgc)
-                .setMemberCount(groupMetadata.participants.length)
-                .setAvatar(pp)
-                .setBackground("https://i.ibb.co/KhtRxwZ/dark.png")
-                .toAttachment()
-
-              this.sendFile(jid, action === 'add' ? wel.toBuffer() : lea.toBuffer(), 'pp.jpg', text, null, false, {
+              this.sendFile(jid, action === 'add' ? wel : lea, 'pp.jpg', text, null, false, {
                 contextInfo: {
                   mentionedJid: [user]
                 }
@@ -610,13 +596,15 @@ module.exports = {
     }
   },
   async delete(m) {
+    if (m.key.fromMe) return
     let chat = global.db.data.chats[m.key.remoteJid]
     if (chat.delete) return
     await this.sendButton(m.key.remoteJid, `
 Terdeteksi @${m.participant.split`@`[0]} telah menghapus pesan
 
 ketik *.on delete* untuk mematikan pesan ini
-`.trim(), '', 'Matikan Antidelete', ',on delete', m.message, {
+`.trim(), '', 'MATIKAN ANTI DELETE', ',on delete', {
+      quoted: m.message,
       contextInfo: {
         mentionedJid: [m.participant]
       }
@@ -628,7 +616,7 @@ ketik *.on delete* untuk mematikan pesan ini
     let users = global.db.data.users
     let user = users[from] || {}
     if (user.whitelist) return
-    if (!db.data.settings.anticall) return
+    if (!global.db.data.anticall) return
     switch (this.callWhitelistMode) {
       case 'mycontact':
         if (from in this.contacts && 'short' in this.contacts[from])
@@ -636,24 +624,24 @@ ketik *.on delete* untuk mematikan pesan ini
         break
     }
     user.call += 1
-    await this.reply(from, `Jika kamu menelepon lebih dari 5, kamu akan diblokir.\n\n${user.call} / 5`, null)
-    if (user.call == 5) {
+    await this.reply(from, `Jika kamu menelepon lebih dari 1, kamu akan diblokir.\n\n${user.call} / 1`, null)
+    if (user.call == 1) {
       await this.blockUser(from, 'add')
       user.call = 0
     }
+
+
   },
-  async GroupUpdate({ jid, desc, descId, descTime, descOwner, announce }) {
-    if (!db.data.chats[jid].descUpdate) return
-    if (!desc) return
+  async GroupUpdate({ jid, desc, descId, descTime, descOwner }) {
+    if (!global.db.data.chats[jid].descUpdate) return
     let caption = `
-    @${descOwner.split`@`[0]} telah mengubah deskripsi grup.
+@${descOwner.split`@`[0]} telah mengubah deskripsi grup.
 
-    ${desc}
+${desc}
 
-    ketik *.off desc* untuk mematikan pesan ini
-        `.trim()
-    this.sendButton(jid, caption, '', 'Matikan Deskripsi', ',off desc', { contextInfo: { mentionedJid: this.parseMention(caption) } })
-
+ketik *.off desc* untuk mematikan pesan ini
+    `.trim()
+     this.sendButton(jid, caption, '', 'MATIKAN DESKPRISI', '.off desc', { contextInfo: { mentionedJid: this.parseMention(caption) } })
   }
 }
 
@@ -667,11 +655,69 @@ global.dfail = (type, m, conn) => {
     private: 'Perintah ini hanya dapat digunakan di Chat Pribadi',
     admin: 'Perintah ini hanya untuk *Admin* grup',
     botAdmin: 'Jadikan bot sebagai *Admin* untuk menggunakan perintah ini',
-    unreg: 'Yah, Kamu Belum Terverifikasi Di AriaBotz Nih, Silahkan Verifikasi Terlebih Dahulu\n Cara Verifikasi Cukup Mudah Tinggal Ketik .verify',
+    //unreg: 'Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*.register*',
     nsfw: 'NSFW tidak aktif'
   }[type]
   if (msg) return m.reply(msg)
 }
+
+global.dfail = (type, m, conn) => {
+const frama = {key:{ fromMe:false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: `status@broadcast` } : {}) }, message: {
+
+
+
+					"productMessage": {
+
+						"product": {
+
+							"productImage": {
+
+								"url": "https://mmg.whatsapp.net/d/f/Am1sSqpVypFpsQawFUFkm4HgkPRqEx8rt32niyBmL4Wa.enc",
+
+								"mimetype": "image/jpeg",
+
+								"fileSha256": "KbJC20DoVEdDw+8WF1EqwtPsdPUTF8/xQbhg+65P3q4=",
+
+								"fileLength": "43344",
+
+								"height": 1080,
+
+								"width": 1080,
+
+								"mediaKey": "cX+6c20dws6B++0slmMNXcCk7omK+zvheoN6087j9nl=",
+
+								"fileEncSha256": "BGO1C/OttoScb1UxDrGlwsI9eImocg1zwbLgYKmecXs=",
+
+								"directPath": "/v/t62.7118-24/20036572_1210576852672540_4032358369544328852_n.enc?oh=d0e477e1bf0a01bfcf328776ab50ccee&oe=6043238E",
+
+								"mediaKeyTimestamp": "1612168223",
+
+								"jpegThumbnail": fs.readFileSync('./src/logo.jpg')
+
+		},
+
+							"productId": "3872465552870232",
+
+							"title": `contact: ${conn.getName(m.sender)}`,
+
+							"description" : ``,
+
+	"productImageCount": 1
+
+						},
+
+						"businessOwnerJid": "6287834993722@s.whatsapp.net"}}}    
+//const fcrew = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) }, message: { "contactMessage": { "title":`${conn.getName(m.sender)}`,"h": `aloo`, 'jpegThumbnail': global.thumbnail ? global.thumbnail : Buffer.alloc(0)}}}
+
+let msg = {
+  unreg: '\n*AriaBotz*'
+}
+  conn.sendButton(m.chat, `
+Kamu belum terdaftar di database nya *AriaBotz*.
+Silahkan Verifikasi terlebih dahulu
+`.trim(), '```Verifikasi AriaBotz```', 'VERIFIKASI', '.verify', { quoted: frama })
+}
+
 
 let fs = require('fs')
 let chalk = require('chalk')
