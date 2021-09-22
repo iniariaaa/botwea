@@ -14,8 +14,8 @@ handler.all = async function (m, { isBlocked }) {
     try {
         if (m.mentionedJid.includes(this.user.jid) && m.isGroup) {
             await this.send2Button(m.chat,
-                isBanned ? 'AriaBotz tidak aktif' : banned ? 'kamu dibanned' : 'ariaBotz disini',
-                '© AriaBotz',
+                isBanned ? 'ariabotz tidak aktif' : banned ? 'kamu dibanned' : 'ariabotz disini',
+                '© ariabotz',
                 isBanned ? 'Unban' : banned ? 'Pemilik Bot' : 'Menu',
                 isBanned ? '.unban' : banned ? '.owner' : '.menu',
                 m.isGroup ? 'Ban' : isBanned ? 'Unban' : 'Donasi',
@@ -31,7 +31,9 @@ handler.all = async function (m, { isBlocked }) {
 ├ 7 Hari / Rp 5,000
 ├ 30 Hari / Rp 10,000
 └────
-`.trim(), '© AriaBotz', 'Pemilik Bot', '.owner', m)
+
+https://github.com/ariffb25/ariabotz
+`.trim(), '© ariabotz', 'Pemilik Bot', ',owner', m)
     }
 
     // salam
@@ -61,7 +63,7 @@ handler.all = async function (m, { isBlocked }) {
     if (new Date() * 1 - setting.status > 1000) {
         let _uptime = process.uptime() * 1000
         let uptime = clockString(_uptime)
-        await this.setStatus(`Aktif selama ${uptime} | Mode: ${global.opts['self'] ? 'Private' : setting.groupOnly ? 'Hanya Grup' : 'Publik'} | AriaBotz`).catch(_ => _)
+        await this.setStatus(`Aktif selama ${uptime} | Mode: ${global.opts['self'] ? 'Private' : setting.groupOnly ? 'Hanya Grup' : 'Publik'} | ariabotz oleh ariffb`).catch(_ => _)
         setting.status = new Date() * 1
     }
 
