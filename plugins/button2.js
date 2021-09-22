@@ -295,9 +295,14 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                 ]
             },
         ]
-    }:
-  }, {}), {waitForAck: true})
-  }
+     ], "contextInfo": {
+            "stanzaId": m.key.id,
+            "participant": m.sender,
+            "quotedMessage": m.message
+          }
+        }
+      }, {}), { waitForAck: true })
+    }
     // gunakan ini jika kamu menggunakan whatsapp bisnis
     //   throw `
     // ┌〔 DAFTAR MENU 〕
