@@ -1,3 +1,4 @@
+let { MessageType } = require('@adiwajshing/baileys')
 let cuk = require('node-fetch')
 let handler = async (m, { conn }) => {
 
