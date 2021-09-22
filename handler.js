@@ -2,6 +2,7 @@ let util = require('util')
 let fetch = require('node-fetch')
 let simple = require('./lib/simple')
 const uploadImage = require('./lib/uploadImage')
+const knights = require('knights-canvas')
 let { MessageType } = require('@adiwajshing/baileys')
 
 const isNumber = x => typeof x === 'number' && !isNaN(x)
@@ -28,7 +29,7 @@ module.exports = {
         let user = global.db.data.users[m.sender]
         if (typeof user !== 'object') global.db.data.users[m.sender] = {}
         if (user) {
-            if (!isNumber(user.healt)) user.healt = 0
+if (!isNumber(user.healt)) user.healt = 0
             if (!isNumber(user.level)) user.level = 0
             if (!isNumber(user.exp)) user.exp = 0
 	    if (!isNumber(user.coin)) user.coin = 0
@@ -258,10 +259,10 @@ module.exports = {
           if (!('descUpdate' in chat)) chat.descUpdate = true
           if (!('stiker' in chat)) chat.stiker = false
           if (!('delete' in chat)) chat.delete = true
-          if (!('antiLink' in chat)) chat.antiLink = true
-          if (!('antiBadword' in chat)) chat.antiBadword = true
+          if (!('antiLink' in chat)) chat.antiLink = false
           if (!isNumber(chat.expired)) chat.expired = 0
-          if (!isNumber(chat.pc)) chat.pc = 0
+          if (!('antiBadword' in chat)) chat.antiBadword = true
+          if (!('viewonce' in chat)) chat.viewonce = true
         } else global.db.data.chats[m.chat] = {
           isBanned: false,
           welcome: false,
@@ -273,14 +274,14 @@ module.exports = {
           descUpdate: true,
           stiker: false,
           delete: true,
-          antiLink: true,
-          antiBadword: true,
+          antiLink: false,
           expired: 0,
-          pc: 0,
+          antiBadword: true,
+          viewonce: true,
         }
 
-        let settings = global.db.data.settings
-        if (typeof settings !== 'object') global.db.data.settings = {}
+        let settings = global.db.data.settings[this.user.jid]
+        if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}
         if (settings) {
           if (!'anon' in settings) settings.anon = true
           if (!'anticall' in settings) settings.anticall = true
@@ -292,7 +293,7 @@ module.exports = {
           if (!'jadibot' in settings) settings.groupOnly = false
           if (!'nsfw' in settings) settings.nsfw = true
           if (!isNumber(settings.status)) settings.status = 0
-        } else global.db.data.settings = {
+        } else global.db.data.settings[this.user.jid] = {
           anon: true,
           anticall: true,
           antispam: true,
@@ -335,14 +336,14 @@ module.exports = {
       let isROwner = [global.conn.user.jid, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
       let isOwner = isROwner || m.fromMe
       let isMods = isOwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
-      if (!isOwner && !m.isGroup && global.db.data.settings.groupOnly) return
       let isPrems = isROwner || global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+      if (!isPrems && !m.isGroup && global.db.data.settings.groupOnly) return
       let groupMetadata = m.isGroup ? this.chats.get(m.chat).metadata || await this.groupMetadata(m.chat) : {} || {}
       let participants = m.isGroup ? groupMetadata.participants : [] || []
       let user = m.isGroup ? participants.find(u => u.jid == m.sender) : {} // User Data
       let bot = m.isGroup ? participants.find(u => u.jid == this.user.jid) : {} // Data Kamu (bot)
-      let isAdmin = user.isAdmin || user.isSuperAdmin || false // Apakah user admin?
-      let isBotAdmin = bot.isAdmin || bot.isSuperAdmin || false // Apakah kamu (bot) admin?
+      let isAdmin = user?.isAdmin || user?.isSuperAdmin || false // Apakah user admin?
+      let isBotAdmin = bot?.isAdmin || bot?.isSuperAdmin || false // Apakah kamu (bot) admin?
       let isBlocked = this.blocklist.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').filter(v => v != this.user.jid).includes(m.sender) // Apakah user diblokir?
       for (let name in global.plugins) {
         let plugin = global.plugins[name]
@@ -354,7 +355,7 @@ module.exports = {
         let match = (_prefix instanceof RegExp ? // RegExp Mode?
           [[_prefix.exec(m.text), _prefix]] :
           Array.isArray(_prefix) ? // Array?
-    _prefix.map(p => {
+            _prefix.map(p => {
               let re = p instanceof RegExp ? // RegExp in Array?
                 p :
                 new RegExp(str2Regex(p))
@@ -491,7 +492,7 @@ module.exports = {
             m.error = e
             console.error(e)
             if (e) {
-              let text = util.format(e)
+              let text = util.format(e.message ? e.message : e)
               for (let key of Object.values(global.APIKeys))
                 text = text.replace(new RegExp(key, 'g'), 'apikey')
               m.reply(text)
@@ -505,7 +506,7 @@ module.exports = {
                 console.error(e)
               }
             }
-            if (m.limit) m.reply(+ m.limit + ' Limit terpakai') // Jadikan sebagai komentar jika kamu risih dengan pesan ini
+            // if (m.limit) m.reply(+ m.limit + ' Limit terpakai') // Jadikan sebagai komentar jika kamu risih dengan pesan ini
           }
           break
         }
@@ -560,20 +561,35 @@ module.exports = {
         if (chat.welcome) {
           let groupMetadata = await this.groupMetadata(jid)
           for (let user of participants) {
-            let pp = 'https://i.ibb.co/fHDx30X/20210725-125918.jpg'
-           // let pp = 'https://i.ibb.co/jr9Nh6Q/Thumb.jpg'
+            // let pp = './src/avatar_contact.png'
+            let pp = 'https://i.ibb.co/jr9Nh6Q/Thumb.jpg'
+            let ppgc = 'https://i.ibb.co/jr9Nh6Q/Thumb.jpg'
             try {
               pp = await uploadImage(await (await fetch(await this.getProfilePicture(user))).buffer())
+              ppgc = await uploadImage(await (await fetch(await this.getProfilePicture(jid))).buffer())
             } catch (e) {
             } finally {
-              text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Selamat datang, @user!').replace('@subject', this.getName(jid)).replace('@desc', groupMetadata.desc) :
+              text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Selamat datang, @user!').replace('@subject', this.getName(jid)).replace('@desc', groupMetadata.desc ? String.fromCharCode(8206).repeat(4001) + groupMetadata.desc : '') :
                 (chat.sBye || this.bye || conn.bye || 'Sampai jumpa, @user!')).replace(/@user/g, '@' + user.split`@`[0])
-              let wel = `https://hardianto-chan.herokuapp.com/api/tools/welcomer2?name=${encodeURIComponent(this.getName(user))}&descriminator=${user.split(`@`)[0].substr(-5)}&totalmem=${encodeURIComponent(groupMetadata.participants.length)}&namegb=${encodeURIComponent(this.getName(jid))}&ppuser=${pp}&background=https://i.ibb.co/KhtRxwZ/dark.png&apikey=hardianto`
-              let lea = `https://hardianto-chan.herokuapp.com/api/tools/leave2?name=${encodeURIComponent(this.getName(user))}&descriminator=${user.split(`@`)[0].substr(-5)}&totalmem=${encodeURIComponent(groupMetadata.participants.length)}&namegb=${encodeURIComponent(this.getName(jid))}&ppuser=${pp}&background=https://i.ibb.co/KhtRxwZ/dark.png&apikey=hardianto`
-              
-	      //this.sendButtonLoc(jid, action === 'add' ? await fetch(wel : lea).buffer(), text.trim(), '®Zyxmaple', 'WELCOME BRO', 'welcome', null, false, {
+              let wel = await new knights.Welcome()
+                .setUsername(this.getName(user))
+                .setGuildName(this.getName(jid))
+                .setGuildIcon(ppgc)
+                .setMemberCount(groupMetadata.participants.length)
+                .setAvatar(pp)
+                .setBackground("https://i.ibb.co/KhtRxwZ/dark.png")
+                .toAttachment()
 
-              this.sendFile(jid, action === 'add' ? wel : lea, 'pp.jpg', text, null, false, {
+              let lea = await new knights.Goodbye()
+                .setUsername(this.getName(user))
+                .setGuildName(this.getName(jid))
+                .setGuildIcon(ppgc)
+                .setMemberCount(groupMetadata.participants.length)
+                .setAvatar(pp)
+                .setBackground("https://i.ibb.co/KhtRxwZ/dark.png")
+                .toAttachment()
+
+              this.sendFile(jid, action === 'add' ? wel.toBuffer() : lea.toBuffer(), 'pp.jpg', text, null, false, {
                 contextInfo: {
                   mentionedJid: [user]
                 }
@@ -596,15 +612,13 @@ module.exports = {
     }
   },
   async delete(m) {
-    if (m.key.fromMe) return
     let chat = global.db.data.chats[m.key.remoteJid]
     if (chat.delete) return
     await this.sendButton(m.key.remoteJid, `
 Terdeteksi @${m.participant.split`@`[0]} telah menghapus pesan
 
 ketik *.on delete* untuk mematikan pesan ini
-`.trim(), '', 'MATIKAN ANTI DELETE', ',on delete', {
-      quoted: m.message,
+`.trim(), '', 'Matikan Antidelete', ',on delete', m.message, {
       contextInfo: {
         mentionedJid: [m.participant]
       }
@@ -616,7 +630,7 @@ ketik *.on delete* untuk mematikan pesan ini
     let users = global.db.data.users
     let user = users[from] || {}
     if (user.whitelist) return
-    if (!global.db.data.anticall) return
+    if (!db.data.settings.anticall) return
     switch (this.callWhitelistMode) {
       case 'mycontact':
         if (from in this.contacts && 'short' in this.contacts[from])
@@ -624,24 +638,24 @@ ketik *.on delete* untuk mematikan pesan ini
         break
     }
     user.call += 1
-    await this.reply(from, `Jika kamu menelepon lebih dari 1, kamu akan diblokir.\n\n${user.call} / 1`, null)
-    if (user.call == 1) {
+    await this.reply(from, `Jika kamu menelepon lebih dari 5, kamu akan diblokir.\n\n${user.call} / 5`, null)
+    if (user.call == 5) {
       await this.blockUser(from, 'add')
       user.call = 0
     }
-
-
   },
-  async GroupUpdate({ jid, desc, descId, descTime, descOwner }) {
-    if (!global.db.data.chats[jid].descUpdate) return
+  async GroupUpdate({ jid, desc, descId, descTime, descOwner, announce }) {
+    if (!db.data.chats[jid].descUpdate) return
+    if (!desc) return
     let caption = `
-@${descOwner.split`@`[0]} telah mengubah deskripsi grup.
+    @${descOwner.split`@`[0]} telah mengubah deskripsi grup.
 
-${desc}
+    ${desc}
 
-ketik *.off desc* untuk mematikan pesan ini
-    `.trim()
-     this.sendButton(jid, caption, '', 'MATIKAN DESKPRISI', '.off desc', { contextInfo: { mentionedJid: this.parseMention(caption) } })
+    ketik *.off desc* untuk mematikan pesan ini
+        `.trim()
+    this.sendButton(jid, caption, '', 'Matikan Deskripsi', ',off desc', { contextInfo: { mentionedJid: this.parseMention(caption) } })
+
   }
 }
 
@@ -655,7 +669,7 @@ global.dfail = (type, m, conn) => {
     private: 'Perintah ini hanya dapat digunakan di Chat Pribadi',
     admin: 'Perintah ini hanya untuk *Admin* grup',
     botAdmin: 'Jadikan bot sebagai *Admin* untuk menggunakan perintah ini',
-    //unreg: 'Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*.register*',
+    unreg: 'Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar Arif.19*',
     nsfw: 'NSFW tidak aktif'
   }[type]
   if (msg) return m.reply(msg)
