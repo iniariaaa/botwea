@@ -712,7 +712,7 @@ const frama = {key:{ fromMe:false, participant: `0@s.whatsapp.net`, ...(m.chat ?
 let msg = {
   unreg: '\n*AriaBotz*'
 }
-  this.sendButton(m.chat, `
+  conn.sendButton(m.chat, `
 Kamu belum terdaftar di database nya *AriaBotz*.
 Silahkan Verifikasi terlebih dahulu
 `.trim(), '```Verifikasi AriaBotz```', 'VERIFIKASI', '.verify', frama )
