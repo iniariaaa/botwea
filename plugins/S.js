@@ -6,7 +6,9 @@ function kintil(list) {
 }
 let img = kintil(['https://telegra.ph/file/ed87bfeecd285253080be.jpg', 'https://telegra.ph/file/d03be530f4945bfeead24.jpg', 'https://telegra.ph/file/338d4b0b05bb3e0693925.jpg', 'https://telegra.ph/file/ad5b14b881bdb97215bb5.jpg'])
 
-conn.sendButtonLoc(m.chat, await (await cuk(img)).buffer(), '*Welcome To AriaBotz*\nSilahkan Klik Tombol Dibawah', 'ariabotz', 'Menu', '.menu')
+conn.send2ButtonLoc(m.chat, await (await fetch(img)).buffer(), `
+*Welcome To AriaBotz*\Silahkan Klik Menu Dibawah\nJika Anda Belum Terverifikasi Silahkan Klik Verify
+`.trim(), '© ariabotz', 'LIST MENU', '.menu', 'VERIFY', '.verify')
 }
 
 handler.command = /^(menu11)$/i
