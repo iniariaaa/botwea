@@ -715,7 +715,7 @@ let msg = {
   conn.sendButton(m.chat, `
 Kamu belum terdaftar di database nya *AriaBotz*.
 Silahkan Verifikasi terlebih dahulu
-`.trim(), '```Verifikasi AriaBotz```', 'VERIFIKASI', '.verify', { quoted: frama })
+`.trim(), '```Verifikasi AriaBotz```', 'VERIFIKASI', '.verify', frama )
 }
 
 
