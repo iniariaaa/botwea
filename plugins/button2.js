@@ -187,24 +187,23 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
     })
     if (teks == '404') {
       return conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
-        "listMessage": {
-          "title": `${ucapan()}, ${name}`.trim(),
-          "description": "Bot Aktif Di Jam\n06.00-08.00\n12.00-14.00\n21.00-23.00\n\nBagi Yang Mau Join Ke Group Silahkan Klik Link Dibawah\nhttps://chat.whatsapp.com/IdK7gOMQQpC7WdfIgtuQtn\n\n Script Botz: https://github.com/iniariaaa/botwea\n\n*THANKS TO*\n• Nurutomo\n• Ariffb25\n• Aria Putra Pratama\n• Zero Bot Ofc",
-          "buttonText": "𝐊𝐥𝐢𝐤 𝐃𝐢𝐬𝐢𝐧𝐢 ⌕",
-          "listType": "SINGLE_SELECT",
-          "sections": [
+    "listMessage": {
+        "title": "MENU ARIA BOTZ",
+        "description":"Bot Aktif Di Jam\n06.00-08.00\n12.00-14.00\n21.00-23.00\n\nBagi Yang Mau Join Ke Group Silahkan Klik Link Dibawah\nhttps://chat.whatsapp.com/IdK7gOMQQpC7WdfIgtuQtn\n\n Script Botz: https://github.com/iniariaaa/botwea\n\n*THANKS TO*\n• Nurutomo\n• Ariffb25\n• Aria Putra Pratama\n• Zero Bot Ofc",
+        "buttonText": "𝐊𝐥𝐢𝐤 𝐃𝐢𝐬𝐢𝐧𝐢 ⌕",
+        "listType": "SINGLE_SELECT",
+        "sections": [
             {
-              "rows": [
-                {
                 "title": "◉ Menu Ke - 1",
                 "rows": [
                     {
-                        "title": '► ALL MENU',
-                        "description": "\n𝗜 𝗪𝗮𝗻𝘁 𝗧𝗼 𝗨𝘀𝗲 𝐀𝐋𝐋 𝐌𝐄𝐍𝐔",
-                        "rowId": ".? all"
+                        "title": '► RPG MENU',
+                        "description": "\n𝗜 𝗪𝗮𝗻𝘁 𝗧𝗼 𝗨𝘀𝗲 𝗥𝗣𝗚 𝗠𝗘𝗡𝗨",
+                        "rowId": `.rpgmenu`
                     }
                 ]
-            }, {
+            },
+            {
                 "title": "◉ Menu ke - 2",
                 "rows": [
                     {
@@ -291,18 +290,12 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                         "title": '► ABSEN MENU',
                         "description": "\n𝙄 𝙒𝙖𝙣𝙩 𝙏𝙤 𝙐𝙨𝙚 𝘼𝘽𝙎𝙀𝙉 𝙈𝙀𝙉𝙐",
                         "rowId": `.absenmenu`
-      }
+                    }
                 ]
             },
         ]
-     ], "contextInfo": {
-            "stanzaId": m.key.id,
-            "participant": m.sender,
-            "quotedMessage": m.message
-          }
-        }
-      }, {}), { waitForAck: true })
     }
+  }, {}), {waitForAck: true})
     // gunakan ini jika kamu menggunakan whatsapp bisnis
     //   throw `
     // ┌〔 DAFTAR MENU 〕
