@@ -710,7 +710,7 @@ const frama = {key:{ fromMe:false, participant: `0@s.whatsapp.net`, ...(m.chat ?
 //const fcrew = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) }, message: { "contactMessage": { "title":`${conn.getName(m.sender)}`,"h": `aloo`, 'jpegThumbnail': global.thumbnail ? global.thumbnail : Buffer.alloc(0)}}}
 
 let msg = {
-  unreg: '\n*AriaBotz*'
+  unreg: '\n```*AriaBotz*```'
 }
   conn.sendButton(m.chat, `
 Kamu belum terdaftar di database nya *AriaBotz*.
